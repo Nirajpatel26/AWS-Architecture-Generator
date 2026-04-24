@@ -1,0 +1,122 @@
+[
+  {
+    "id": "q01_s3_encryption",
+    "query": "How do I enable server-side encryption on an S3 bucket with a customer-managed KMS key?",
+    "expected_sources": ["s3", "kms"],
+    "expected_service": "s3"
+  },
+  {
+    "id": "q02_lambda_cold_start",
+    "query": "Lambda cold start latency mitigation techniques",
+    "expected_sources": ["lambda"],
+    "expected_service": "lambda"
+  },
+  {
+    "id": "q03_dynamodb_pitr",
+    "query": "Enable point-in-time recovery on a DynamoDB table",
+    "expected_sources": ["dynamodb"],
+    "expected_service": "dynamodb"
+  },
+  {
+    "id": "q04_hipaa_required_controls",
+    "query": "What are the required controls for a HIPAA-compliant workload on AWS?",
+    "expected_sources": ["hipaa"],
+    "expected_compliance": "HIPAA"
+  },
+  {
+    "id": "q05_api_gateway_throttling",
+    "query": "API Gateway throttling and rate limiting configuration",
+    "expected_sources": ["api_gateway"],
+    "expected_service": "api_gateway"
+  },
+  {
+    "id": "q06_cloudfront_origin",
+    "query": "CloudFront distribution with an S3 origin and OAI",
+    "expected_sources": ["cloudfront", "s3"],
+    "expected_service": "cloudfront"
+  },
+  {
+    "id": "q07_kms_key_policy",
+    "query": "KMS customer master key policy for cross-account access",
+    "expected_sources": ["kms"],
+    "expected_service": "kms"
+  },
+  {
+    "id": "q08_iam_least_privilege",
+    "query": "IAM least privilege best practices and avoiding wildcard actions",
+    "expected_sources": ["iam"],
+    "expected_service": "iam"
+  },
+  {
+    "id": "q09_cloudtrail_multi_region",
+    "query": "CloudTrail multi-region trail with log file validation",
+    "expected_sources": ["cloudtrail"],
+    "expected_service": "cloudtrail"
+  },
+  {
+    "id": "q10_cognito_user_pool",
+    "query": "Cognito user pool MFA and password policy configuration",
+    "expected_sources": ["cognito"],
+    "expected_service": "cognito"
+  },
+  {
+    "id": "q11_rds_multi_az",
+    "query": "RDS Multi-AZ deployment for high availability",
+    "expected_sources": ["rds"],
+    "expected_service": "rds"
+  },
+  {
+    "id": "q12_glue_crawler",
+    "query": "Glue crawler schema inference for a JSON data lake",
+    "expected_sources": ["glue"],
+    "expected_service": "glue"
+  },
+  {
+    "id": "q13_athena_query_results",
+    "query": "Athena query result location and workgroup settings",
+    "expected_sources": ["athena"],
+    "expected_service": "athena"
+  },
+  {
+    "id": "q14_vpc_endpoints",
+    "query": "VPC interface endpoints for private access to AWS services",
+    "expected_sources": ["vpc"],
+    "expected_service": "vpc"
+  },
+  {
+    "id": "q15_well_architected_security",
+    "query": "Security pillar of the AWS Well-Architected Framework",
+    "expected_sources": ["well_architected"],
+    "expected_doc_type": "well_architected"
+  },
+  {
+    "id": "q16_sagemaker_training",
+    "query": "SageMaker training job with GPU instances and checkpointing",
+    "expected_sources": ["sagemaker"],
+    "expected_service": "sagemaker"
+  },
+  {
+    "id": "q17_step_functions_state_machine",
+    "query": "Step Functions state machine with retry and catch clauses",
+    "expected_sources": ["step_functions"],
+    "expected_service": "step_functions"
+  },
+  {
+    "id": "q18_route53_health_checks",
+    "query": "Route53 failover routing with health checks",
+    "expected_sources": ["route53"],
+    "expected_service": "route53"
+  },
+  {
+    "id": "q19_pci_payments",
+    "query": "PCI-DSS requirements for storing cardholder data on AWS",
+    "expected_sources": ["pci", "hipaa", "well_architected"],
+    "expected_compliance": "PCI"
+  },
+  {
+    "id": "q20_elasticache_redis",
+    "query": "ElastiCache Redis cluster mode with encryption in transit",
+    "expected_sources": ["elasticache"],
+    "expected_service": "elasticache"
+  }
+]

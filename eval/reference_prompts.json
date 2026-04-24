@@ -1,0 +1,175 @@
+[
+  {
+    "id": "detailed_hipaa",
+    "prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_dynamodb_table",
+      "aws_kms_key",
+      "aws_cloudtrail"
+    ],
+    "expected_cost_range": [20, 200],
+    "expected_compliance": ["HIPAA"]
+  },
+  {
+    "id": "moderate_ecom",
+    "prompt": "E-commerce backend with payments, inventory, and user accounts",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_dynamodb_table",
+      "aws_cognito_user_pool"
+    ],
+    "expected_cost_range": [5, 80]
+  },
+  {
+    "id": "vague_api",
+    "prompt": "I need an API",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function"
+    ],
+    "expected_cost_range": [1, 40]
+  },
+  {
+    "id": "ambiguous_pipeline",
+    "prompt": "Data pipeline for analytics team",
+    "expected_workload": "data_pipeline",
+    "expected_components": [
+      "aws_s3_bucket",
+      "aws_glue_job",
+      "aws_athena_workgroup"
+    ],
+    "expected_cost_range": [10, 150]
+  },
+  {
+    "id": "contradictory_webapp",
+    "prompt": "Cheap but highly-available web app",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function"
+    ],
+    "expected_cost_range": [5, 80]
+  },
+  {
+    "id": "pci_payments",
+    "prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_guardduty_detector"
+    ],
+    "expected_cost_range": [5, 100],
+    "expected_compliance": ["PCI"]
+  },
+  {
+    "id": "soc2_saas",
+    "prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_iam_account_password_policy",
+      "aws_cloudwatch_log_group"
+    ],
+    "expected_cost_range": [5, 100],
+    "expected_compliance": ["SOC2"]
+  },
+  {
+    "id": "multi_region_saas",
+    "prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_route53_health_check"
+    ],
+    "expected_cost_range": [5, 400]
+  },
+  {
+    "id": "ml_training_cv",
+    "prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
+    "expected_workload": "ml_training",
+    "expected_components": [
+      "aws_s3_bucket",
+      "aws_sagemaker_model",
+      "aws_ecr_repository"
+    ],
+    "expected_cost_range": [20, 500]
+  },
+  {
+    "id": "static_marketing",
+    "prompt": "Marketing static site with global CDN, custom domain, HTTPS",
+    "expected_workload": "static_site",
+    "expected_components": [
+      "aws_s3_bucket",
+      "aws_cloudfront_distribution",
+      "aws_route53_zone"
+    ],
+    "expected_cost_range": [1, 50]
+  },
+  {
+    "id": "iot_telemetry",
+    "prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
+    "expected_workload": "data_pipeline",
+    "expected_components": [
+      "aws_s3_bucket",
+      "aws_glue_job"
+    ],
+    "expected_cost_range": [10, 200]
+  },
+  {
+    "id": "healthcare_ml",
+    "prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
+    "expected_workload": "ml_training",
+    "expected_components": [
+      "aws_s3_bucket",
+      "aws_sagemaker_model",
+      "aws_kms_key",
+      "aws_cloudtrail"
+    ],
+    "expected_cost_range": [20, 500],
+    "expected_compliance": ["HIPAA"]
+  },
+  {
+    "id": "internal_crud",
+    "prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function"
+    ],
+    "expected_cost_range": [1, 40]
+  },
+  {
+    "id": "gaming_leaderboard",
+    "prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_dynamodb_table"
+    ],
+    "expected_cost_range": [20, 2000]
+  },
+  {
+    "id": "fintech_hipaa_pci",
+    "prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_kms_key",
+      "aws_cloudtrail",
+      "aws_guardduty_detector"
+    ],
+    "expected_cost_range": [10, 300],
+    "expected_compliance": ["HIPAA", "PCI"]
+  }
+]

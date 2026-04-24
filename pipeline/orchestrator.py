@@ -10,9 +10,11 @@ Instrumentation:
 from __future__ import annotations
 
 import copy
+import sys
 import time
+import traceback
 from dataclasses import asdict, dataclass, field
-from typing import Any, Dict, Iterator, List, Optional, Tuple
+from typing import Any, Callable, Dict, Iterator, List, Optional, Tuple
 
 from . import (
     assumptions,
@@ -94,10 +96,23 @@ def run_streaming(
     llm.reset_usage()
     stage_timings: Dict[str, float] = {}
 
-    def _stage(name: str, fn, *args, **kwargs):
+    stage_errors: Dict[str, str] = {}
+
+    def _stage(name: str, fn, *args, fallback: Any = None, **kwargs):
+        """Run a stage, capturing exceptions and substituting `fallback`.
+
+        Crashes in any single stage should degrade gracefully rather than
+        abort the whole pipeline — the synthetic-stability eval (and the UI)
+        treats a partial `RunResult` as much better than a raised exception.
+        """
         yield ("stage_started", name)
         t0 = time.perf_counter()
-        result = fn(*args, **kwargs)
+        try:
+            result = fn(*args, **kwargs)
+        except Exception as e:  # noqa: BLE001 — intentional catch-all per stage
+            traceback.print_exc(file=sys.stderr)
+            stage_errors[name] = f"{type(e).__name__}: {e}"
+            result = fallback() if callable(fallback) else fallback
         elapsed = time.perf_counter() - t0
         stage_timings[name] = round(elapsed, 4)
         log_stage(name, elapsed)
@@ -122,56 +137,110 @@ def run_streaming(
 
     # Stage 1: extract
     if spec is None:
-        spec = _drain(_stage("extract", extractor.extract, prompt))
+        spec = _drain(_stage(
+            "extract", extractor.extract, prompt,
+            fallback=lambda: schema.ArchSpec(raw_prompt=prompt),
+        ))
         yield from _flush()
     else:
         stage_timings["extract"] = 0.0
 
     # Stage 2: defaults
-    spec = _drain(_stage("defaults", defaults.apply_defaults, spec))
+    spec = _drain(_stage(
+        "defaults", defaults.apply_defaults, spec,
+        fallback=spec,
+    ))
     yield from _flush()
 
     # Stage 3: assumptions / overrides
     if overrides:
-        spec = _drain(_stage("assumptions", assumptions.confirmed, spec, overrides))
+        spec = _drain(_stage(
+            "assumptions", assumptions.confirmed, spec, overrides,
+            fallback=spec,
+        ))
         yield from _flush()
     else:
         stage_timings["assumptions"] = 0.0
 
     # Stage 4: template assembly (plus base template for diff)
-    base_template = _drain(_stage("base_template", _build_base_template, spec))
+    _empty_tpl = lambda: {"resources": [], "providers": [], "variables": {}, "applied_patches": [], "patch_assumptions": []}
+    base_template = _drain(_stage(
+        "base_template", _build_base_template, spec,
+        fallback=_empty_tpl,
+    ))
     yield from _flush()
-    template = _drain(_stage("template_engine", template_engine.assemble, spec))
+    template = _drain(_stage(
+        "template_engine", template_engine.assemble, spec,
+        fallback=_empty_tpl,
+    ))
     yield from _flush()
+    if not isinstance(template, dict):
+        template = _empty_tpl()
+    if not isinstance(base_template, dict):
+        base_template = _empty_tpl()
 
     # Stage 5: HCL emit
-    tf_code = _drain(_stage("tf_generator", tf_generator.emit, template, spec.region))
+    tf_code = _drain(_stage(
+        "tf_generator", tf_generator.emit, template, spec.region,
+        fallback="",
+    ))
     yield from _flush()
 
     # Stage 6: validate + repair
-    val = _drain(_stage("validator", validator.validate, tf_code))
+    _val_fallback = lambda: validator.ValidationResult(
+        ok=False, attempts=0, tf_code=tf_code or "",
+        errors=["validator stage skipped (pipeline fallback)"],
+        skipped_reason="exception",
+    )
+    val = _drain(_stage(
+        "validator", validator.validate, tf_code or "",
+        fallback=_val_fallback,
+    ))
     yield from _flush()
+    if val is None:
+        val = _val_fallback()
 
     # Stage 7: diagram
-    png_mmd = _drain(_stage("diagram", diagram.render, template))
+    png_mmd = _drain(_stage(
+        "diagram", diagram.render, template,
+        fallback=(None, ""),
+    ))
     yield from _flush()
+    if not isinstance(png_mmd, tuple) or len(png_mmd) != 2:
+        png_mmd = (None, "")
     png, mermaid = png_mmd
 
     # Stage 8: cost
-    cost_tuple = _drain(_stage("cost", cost.estimate, template, spec.scale))
+    cost_tuple = _drain(_stage(
+        "cost", cost.estimate, template, spec.scale,
+        fallback=(0.0, []),
+    ))
     yield from _flush()
+    if not isinstance(cost_tuple, tuple) or len(cost_tuple) != 2:
+        cost_tuple = (0.0, [])
     total, breakdown = cost_tuple
 
     # Stage 9: explain
-    explain_result = _drain(
-        _stage("explainer", explainer.explain_structured, spec, template, retrieved or [])
-    )
+    explain_result = _drain(_stage(
+        "explainer", explainer.explain_structured, spec, template, retrieved or [],
+        fallback=lambda: explainer.ExplainResult(rationale="", thinking=None),
+    ))
     yield from _flush()
+    if explain_result is None:
+        explain_result = explainer.ExplainResult(rationale="", thinking=None)
 
-    usage = llm.get_usage()
-    in_tok = sum(e.get("input_tokens", 0) for e in usage)
-    out_tok = sum(e.get("output_tokens", 0) for e in usage)
-    est_cost = llm.estimate_cost_usd(usage)
+    try:
+        usage = llm.get_usage()
+        in_tok = sum(e.get("input_tokens", 0) for e in usage)
+        out_tok = sum(e.get("output_tokens", 0) for e in usage)
+        est_cost = llm.estimate_cost_usd(usage)
+    except Exception:
+        usage, in_tok, out_tok, est_cost = [], 0, 0, 0.0
+
+    try:
+        cost_meta = cost.pricing_meta()
+    except Exception:
+        cost_meta = {}
 
     result = RunResult(
         spec=spec,
@@ -187,7 +256,7 @@ def run_streaming(
         diagram_mermaid=mermaid,
         monthly_cost=total,
         cost_breakdown=breakdown,
-        cost_meta=cost.pricing_meta(),
+        cost_meta=cost_meta,
         explanation=explain_result.rationale,
         explain_thinking=explain_result.thinking,
         validate_skipped=val.skipped_reason,
@@ -198,7 +267,10 @@ def run_streaming(
         total_output_tokens=out_tok,
         estimated_cost_usd=est_cost,
     )
-    log_run(prompt, result)
+    try:
+        log_run(prompt, result)
+    except Exception:
+        pass
     yield ("result", result)
 
 

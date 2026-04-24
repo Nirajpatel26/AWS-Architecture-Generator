@@ -46,8 +46,8 @@
   },
   {
     "base_id": "detailed_hipaa",
-    "mode": "paraphrase",
-    "variant": 3,
+    "mode": "adversarial",
+    "variant": 0,
     "prompt": "PHI-handling-compliant telemedicine API, ~10k users/day, highly available",
     "base_prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
     "expected_workload": "web_api",
@@ -61,8 +61,8 @@
   },
   {
     "base_id": "detailed_hipaa",
-    "mode": "paraphrase",
-    "variant": 4,
+    "mode": "adversarial",
+    "variant": 1,
     "prompt": "PHI-handling-compliant telemedicine API, ~10k users/day, multi-AZ",
     "base_prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
     "expected_workload": "web_api",
@@ -77,36 +77,6 @@
   {
     "base_id": "detailed_hipaa",
     "mode": "adversarial",
-    "variant": 0,
-    "prompt": "HIPAA-compliant telemedicine service, ~10k users/day, multi-AZ",
-    "base_prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "detailed_hipaa",
-    "mode": "adversarial",
-    "variant": 1,
-    "prompt": "PHI-handling-compliant telemedicine API, ~10k users/day, redundant across zones",
-    "base_prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "detailed_hipaa",
-    "mode": "adversarial",
     "variant": 2,
     "prompt": "HIPAA-compliant telemedicine service, ~10k users/day, multi-AZ",
     "base_prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
@@ -121,8 +91,38 @@
   },
   {
     "base_id": "detailed_hipaa",
-    "mode": "adversarial",
-    "variant": 3,
+    "mode": "multilingual",
+    "variant": 0,
+    "prompt": "PHI-handling-compliant telemedicine API, ~10k users/day, redundant across zones",
+    "base_prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_dynamodb_table",
+      "aws_kms_key",
+      "aws_cloudtrail"
+    ]
+  },
+  {
+    "base_id": "detailed_hipaa",
+    "mode": "multilingual",
+    "variant": 1,
+    "prompt": "HIPAA-compliant telemedicine service, ~10k users/day, multi-AZ",
+    "base_prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_dynamodb_table",
+      "aws_kms_key",
+      "aws_cloudtrail"
+    ]
+  },
+  {
+    "base_id": "detailed_hipaa",
+    "mode": "multilingual",
+    "variant": 2,
     "prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
     "base_prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
     "expected_workload": "web_api",
@@ -136,8 +136,8 @@
   },
   {
     "base_id": "detailed_hipaa",
-    "mode": "adversarial",
-    "variant": 4,
+    "mode": "noisy",
+    "variant": 0,
     "prompt": "PHI-handling-compliant telemedicine REST API, ~10k users/day, highly available",
     "base_prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
     "expected_workload": "web_api",
@@ -151,8 +151,8 @@
   },
   {
     "base_id": "detailed_hipaa",
-    "mode": "multilingual",
-    "variant": 0,
+    "mode": "noisy",
+    "variant": 1,
     "prompt": "PHI-handling-compliant telemedicine endpoint, ~10k users/day, multi-AZ",
     "base_prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
     "expected_workload": "web_api",
@@ -166,96 +166,6 @@
   },
   {
     "base_id": "detailed_hipaa",
-    "mode": "multilingual",
-    "variant": 1,
-    "prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
-    "base_prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "detailed_hipaa",
-    "mode": "multilingual",
-    "variant": 2,
-    "prompt": "PHI-handling-compliant telemedicine service, ~10k users/day, highly available",
-    "base_prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "detailed_hipaa",
-    "mode": "multilingual",
-    "variant": 3,
-    "prompt": "regulated healthcare-compliant telemedicine API, ~10k users/day, multi-AZ",
-    "base_prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "detailed_hipaa",
-    "mode": "multilingual",
-    "variant": 4,
-    "prompt": "PHI-handling-compliant telemedicine service, ~10k users/day, highly available",
-    "base_prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "detailed_hipaa",
-    "mode": "noisy",
-    "variant": 0,
-    "prompt": "PHI-handling-compliant telemedicine API, ~10k users/day, redundant across zones",
-    "base_prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "detailed_hipaa",
-    "mode": "noisy",
-    "variant": 1,
-    "prompt": "HIPAA-compliant telemedicine API, ~10k users/day, highly available",
-    "base_prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "detailed_hipaa",
     "mode": "noisy",
     "variant": 2,
     "prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
@@ -270,36 +180,6 @@
     ]
   },
   {
-    "base_id": "detailed_hipaa",
-    "mode": "noisy",
-    "variant": 3,
-    "prompt": "PHI-handling-compliant telemedicine service, ~10k users/day, multi-AZ",
-    "base_prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "detailed_hipaa",
-    "mode": "noisy",
-    "variant": 4,
-    "prompt": "regulated healthcare-compliant telemedicine API, ~10k users/day, multi-AZ",
-    "base_prompt": "HIPAA-compliant telemedicine API, ~10k users/day, multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
     "base_id": "moderate_ecom",
     "mode": "paraphrase",
     "variant": 0,
@@ -331,34 +211,6 @@
     "base_id": "moderate_ecom",
     "mode": "paraphrase",
     "variant": 2,
-    "prompt": "E-commerce backend with payments, inventory, and user accounts",
-    "base_prompt": "E-commerce backend with payments, inventory, and user accounts",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table",
-      "aws_cognito_user_pool"
-    ]
-  },
-  {
-    "base_id": "moderate_ecom",
-    "mode": "paraphrase",
-    "variant": 3,
-    "prompt": "E-commerce backend with payments, inventory, and user accounts",
-    "base_prompt": "E-commerce backend with payments, inventory, and user accounts",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table",
-      "aws_cognito_user_pool"
-    ]
-  },
-  {
-    "base_id": "moderate_ecom",
-    "mode": "paraphrase",
-    "variant": 4,
     "prompt": "E-commerce backend with payments, inventory, and user accounts",
     "base_prompt": "E-commerce backend with payments, inventory, and user accounts",
     "expected_workload": "web_api",
@@ -413,34 +265,6 @@
   },
   {
     "base_id": "moderate_ecom",
-    "mode": "adversarial",
-    "variant": 3,
-    "prompt": "E-commerce backend with payments, inventory, and user accounts",
-    "base_prompt": "E-commerce backend with payments, inventory, and user accounts",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table",
-      "aws_cognito_user_pool"
-    ]
-  },
-  {
-    "base_id": "moderate_ecom",
-    "mode": "adversarial",
-    "variant": 4,
-    "prompt": "E-commerce backend with payments, inventory, and user accounts",
-    "base_prompt": "E-commerce backend with payments, inventory, and user accounts",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table",
-      "aws_cognito_user_pool"
-    ]
-  },
-  {
-    "base_id": "moderate_ecom",
     "mode": "multilingual",
     "variant": 0,
     "prompt": "E-commerce backend with payments, inventory, and user accounts",
@@ -483,34 +307,6 @@
   },
   {
     "base_id": "moderate_ecom",
-    "mode": "multilingual",
-    "variant": 3,
-    "prompt": "E-commerce backend with payments, inventory, and user accounts",
-    "base_prompt": "E-commerce backend with payments, inventory, and user accounts",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table",
-      "aws_cognito_user_pool"
-    ]
-  },
-  {
-    "base_id": "moderate_ecom",
-    "mode": "multilingual",
-    "variant": 4,
-    "prompt": "E-commerce backend with payments, inventory, and user accounts",
-    "base_prompt": "E-commerce backend with payments, inventory, and user accounts",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table",
-      "aws_cognito_user_pool"
-    ]
-  },
-  {
-    "base_id": "moderate_ecom",
     "mode": "noisy",
     "variant": 0,
     "prompt": "E-commerce backend with payments, inventory, and user accounts",
@@ -541,34 +337,6 @@
     "base_id": "moderate_ecom",
     "mode": "noisy",
     "variant": 2,
-    "prompt": "E-commerce backend with payments, inventory, and user accounts",
-    "base_prompt": "E-commerce backend with payments, inventory, and user accounts",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table",
-      "aws_cognito_user_pool"
-    ]
-  },
-  {
-    "base_id": "moderate_ecom",
-    "mode": "noisy",
-    "variant": 3,
-    "prompt": "E-commerce backend with payments, inventory, and user accounts",
-    "base_prompt": "E-commerce backend with payments, inventory, and user accounts",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table",
-      "aws_cognito_user_pool"
-    ]
-  },
-  {
-    "base_id": "moderate_ecom",
-    "mode": "noisy",
-    "variant": 4,
     "prompt": "E-commerce backend with payments, inventory, and user accounts",
     "base_prompt": "E-commerce backend with payments, inventory, and user accounts",
     "expected_workload": "web_api",
@@ -607,31 +375,7 @@
     "base_id": "vague_api",
     "mode": "paraphrase",
     "variant": 2,
-    "prompt": "I need an API",
-    "base_prompt": "I need an API",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "vague_api",
-    "mode": "paraphrase",
-    "variant": 3,
-    "prompt": "I need an API",
-    "base_prompt": "I need an API",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "vague_api",
-    "mode": "paraphrase",
-    "variant": 4,
-    "prompt": "I need an API",
+    "prompt": "I need an service",
     "base_prompt": "I need an API",
     "expected_workload": "web_api",
     "expected_components": [
@@ -643,7 +387,7 @@
     "base_id": "vague_api",
     "mode": "adversarial",
     "variant": 0,
-    "prompt": "I need an REST API",
+    "prompt": "I need an API",
     "base_prompt": "I need an API",
     "expected_workload": "web_api",
     "expected_components": [
@@ -667,31 +411,7 @@
     "base_id": "vague_api",
     "mode": "adversarial",
     "variant": 2,
-    "prompt": "I need an API",
-    "base_prompt": "I need an API",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "vague_api",
-    "mode": "adversarial",
-    "variant": 3,
-    "prompt": "I need an API",
-    "base_prompt": "I need an API",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "vague_api",
-    "mode": "adversarial",
-    "variant": 4,
-    "prompt": "I need an REST API",
+    "prompt": "I need an service",
     "base_prompt": "I need an API",
     "expected_workload": "web_api",
     "expected_components": [
@@ -715,7 +435,7 @@
     "base_id": "vague_api",
     "mode": "multilingual",
     "variant": 1,
-    "prompt": "I need an endpoint",
+    "prompt": "I need an API",
     "base_prompt": "I need an API",
     "expected_workload": "web_api",
     "expected_components": [
@@ -737,33 +457,9 @@
   },
   {
     "base_id": "vague_api",
-    "mode": "multilingual",
-    "variant": 3,
-    "prompt": "I need an endpoint",
-    "base_prompt": "I need an API",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "vague_api",
-    "mode": "multilingual",
-    "variant": 4,
-    "prompt": "I need an API",
-    "base_prompt": "I need an API",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "vague_api",
     "mode": "noisy",
     "variant": 0,
-    "prompt": "I need an REST API",
+    "prompt": "I need an endpoint",
     "base_prompt": "I need an API",
     "expected_workload": "web_api",
     "expected_components": [
@@ -787,31 +483,7 @@
     "base_id": "vague_api",
     "mode": "noisy",
     "variant": 2,
-    "prompt": "I need an API",
-    "base_prompt": "I need an API",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "vague_api",
-    "mode": "noisy",
-    "variant": 3,
-    "prompt": "I need an API",
-    "base_prompt": "I need an API",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "vague_api",
-    "mode": "noisy",
-    "variant": 4,
-    "prompt": "I need an endpoint",
+    "prompt": "I need an REST API",
     "base_prompt": "I need an API",
     "expected_workload": "web_api",
     "expected_components": [
@@ -823,32 +495,6 @@
     "base_id": "ambiguous_pipeline",
     "mode": "paraphrase",
     "variant": 0,
-    "prompt": "Data pipeline for analytics team",
-    "base_prompt": "Data pipeline for analytics team",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job",
-      "aws_athena_workgroup"
-    ]
-  },
-  {
-    "base_id": "ambiguous_pipeline",
-    "mode": "paraphrase",
-    "variant": 1,
-    "prompt": "Data data flow for BI team",
-    "base_prompt": "Data pipeline for analytics team",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job",
-      "aws_athena_workgroup"
-    ]
-  },
-  {
-    "base_id": "ambiguous_pipeline",
-    "mode": "paraphrase",
-    "variant": 2,
     "prompt": "Data data flow for reporting team",
     "base_prompt": "Data pipeline for analytics team",
     "expected_workload": "data_pipeline",
@@ -861,7 +507,46 @@
   {
     "base_id": "ambiguous_pipeline",
     "mode": "paraphrase",
-    "variant": 3,
+    "variant": 1,
+    "prompt": "Data pipeline for analytics team",
+    "base_prompt": "Data pipeline for analytics team",
+    "expected_workload": "data_pipeline",
+    "expected_components": [
+      "aws_s3_bucket",
+      "aws_glue_job",
+      "aws_athena_workgroup"
+    ]
+  },
+  {
+    "base_id": "ambiguous_pipeline",
+    "mode": "paraphrase",
+    "variant": 2,
+    "prompt": "Data pipeline for analytics team",
+    "base_prompt": "Data pipeline for analytics team",
+    "expected_workload": "data_pipeline",
+    "expected_components": [
+      "aws_s3_bucket",
+      "aws_glue_job",
+      "aws_athena_workgroup"
+    ]
+  },
+  {
+    "base_id": "ambiguous_pipeline",
+    "mode": "adversarial",
+    "variant": 0,
+    "prompt": "Data ETL for analytics team",
+    "base_prompt": "Data pipeline for analytics team",
+    "expected_workload": "data_pipeline",
+    "expected_components": [
+      "aws_s3_bucket",
+      "aws_glue_job",
+      "aws_athena_workgroup"
+    ]
+  },
+  {
+    "base_id": "ambiguous_pipeline",
+    "mode": "adversarial",
+    "variant": 1,
     "prompt": "Data data flow for analytics team",
     "base_prompt": "Data pipeline for analytics team",
     "expected_workload": "data_pipeline",
@@ -873,21 +558,8 @@
   },
   {
     "base_id": "ambiguous_pipeline",
-    "mode": "paraphrase",
-    "variant": 4,
-    "prompt": "Data ETL for analytics team",
-    "base_prompt": "Data pipeline for analytics team",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job",
-      "aws_athena_workgroup"
-    ]
-  },
-  {
-    "base_id": "ambiguous_pipeline",
     "mode": "adversarial",
-    "variant": 0,
+    "variant": 2,
     "prompt": "Data pipeline for analytics team",
     "base_prompt": "Data pipeline for analytics team",
     "expected_workload": "data_pipeline",
@@ -899,47 +571,8 @@
   },
   {
     "base_id": "ambiguous_pipeline",
-    "mode": "adversarial",
-    "variant": 1,
-    "prompt": "Data pipeline for reporting team",
-    "base_prompt": "Data pipeline for analytics team",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job",
-      "aws_athena_workgroup"
-    ]
-  },
-  {
-    "base_id": "ambiguous_pipeline",
-    "mode": "adversarial",
-    "variant": 2,
-    "prompt": "Data ETL for reporting team",
-    "base_prompt": "Data pipeline for analytics team",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job",
-      "aws_athena_workgroup"
-    ]
-  },
-  {
-    "base_id": "ambiguous_pipeline",
-    "mode": "adversarial",
-    "variant": 3,
-    "prompt": "Data pipeline for reporting team",
-    "base_prompt": "Data pipeline for analytics team",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job",
-      "aws_athena_workgroup"
-    ]
-  },
-  {
-    "base_id": "ambiguous_pipeline",
-    "mode": "adversarial",
-    "variant": 4,
+    "mode": "multilingual",
+    "variant": 0,
     "prompt": "Data ETL for BI team",
     "base_prompt": "Data pipeline for analytics team",
     "expected_workload": "data_pipeline",
@@ -952,21 +585,8 @@
   {
     "base_id": "ambiguous_pipeline",
     "mode": "multilingual",
-    "variant": 0,
-    "prompt": "Data pipeline for analytics team",
-    "base_prompt": "Data pipeline for analytics team",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job",
-      "aws_athena_workgroup"
-    ]
-  },
-  {
-    "base_id": "ambiguous_pipeline",
-    "mode": "multilingual",
     "variant": 1,
-    "prompt": "Data pipeline for reporting team",
+    "prompt": "Data data flow for BI team",
     "base_prompt": "Data pipeline for analytics team",
     "expected_workload": "data_pipeline",
     "expected_components": [
@@ -979,33 +599,7 @@
     "base_id": "ambiguous_pipeline",
     "mode": "multilingual",
     "variant": 2,
-    "prompt": "Data pipeline for reporting team",
-    "base_prompt": "Data pipeline for analytics team",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job",
-      "aws_athena_workgroup"
-    ]
-  },
-  {
-    "base_id": "ambiguous_pipeline",
-    "mode": "multilingual",
-    "variant": 3,
-    "prompt": "Data ETL for BI team",
-    "base_prompt": "Data pipeline for analytics team",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job",
-      "aws_athena_workgroup"
-    ]
-  },
-  {
-    "base_id": "ambiguous_pipeline",
-    "mode": "multilingual",
-    "variant": 4,
-    "prompt": "Data ETL for analytics team",
+    "prompt": "Data pipeline for BI team",
     "base_prompt": "Data pipeline for analytics team",
     "expected_workload": "data_pipeline",
     "expected_components": [
@@ -1018,32 +612,6 @@
     "base_id": "ambiguous_pipeline",
     "mode": "noisy",
     "variant": 0,
-    "prompt": "Data pipeline for analytics team",
-    "base_prompt": "Data pipeline for analytics team",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job",
-      "aws_athena_workgroup"
-    ]
-  },
-  {
-    "base_id": "ambiguous_pipeline",
-    "mode": "noisy",
-    "variant": 1,
-    "prompt": "Data pipeline for analytics team",
-    "base_prompt": "Data pipeline for analytics team",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job",
-      "aws_athena_workgroup"
-    ]
-  },
-  {
-    "base_id": "ambiguous_pipeline",
-    "mode": "noisy",
-    "variant": 2,
     "prompt": "Data data flow for BI team",
     "base_prompt": "Data pipeline for analytics team",
     "expected_workload": "data_pipeline",
@@ -1056,7 +624,7 @@
   {
     "base_id": "ambiguous_pipeline",
     "mode": "noisy",
-    "variant": 3,
+    "variant": 1,
     "prompt": "Data data flow for reporting team",
     "base_prompt": "Data pipeline for analytics team",
     "expected_workload": "data_pipeline",
@@ -1069,8 +637,8 @@
   {
     "base_id": "ambiguous_pipeline",
     "mode": "noisy",
-    "variant": 4,
-    "prompt": "Data ETL for reporting team",
+    "variant": 2,
+    "prompt": "Data pipeline for reporting team",
     "base_prompt": "Data pipeline for analytics team",
     "expected_workload": "data_pipeline",
     "expected_components": [
@@ -1083,30 +651,6 @@
     "base_id": "contradictory_webapp",
     "mode": "paraphrase",
     "variant": 0,
-    "prompt": "Cheap but highly-available frontend + backend app",
-    "base_prompt": "Cheap but highly-available web app",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "contradictory_webapp",
-    "mode": "paraphrase",
-    "variant": 1,
-    "prompt": "Cheap but highly-available web app",
-    "base_prompt": "Cheap but highly-available web app",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "contradictory_webapp",
-    "mode": "paraphrase",
-    "variant": 2,
     "prompt": "Cheap but highly-available web application",
     "base_prompt": "Cheap but highly-available web app",
     "expected_workload": "web_api",
@@ -1118,8 +662,8 @@
   {
     "base_id": "contradictory_webapp",
     "mode": "paraphrase",
-    "variant": 3,
-    "prompt": "Cheap but highly-available web app",
+    "variant": 1,
+    "prompt": "Cheap but highly-available web application",
     "base_prompt": "Cheap but highly-available web app",
     "expected_workload": "web_api",
     "expected_components": [
@@ -1130,8 +674,8 @@
   {
     "base_id": "contradictory_webapp",
     "mode": "paraphrase",
-    "variant": 4,
-    "prompt": "Cheap but highly-available frontend + backend app",
+    "variant": 2,
+    "prompt": "Cheap but highly-available web app",
     "base_prompt": "Cheap but highly-available web app",
     "expected_workload": "web_api",
     "expected_components": [
@@ -1143,7 +687,7 @@
     "base_id": "contradictory_webapp",
     "mode": "adversarial",
     "variant": 0,
-    "prompt": "Cheap but highly-available web app",
+    "prompt": "Cheap but highly-available frontend + backend app",
     "base_prompt": "Cheap but highly-available web app",
     "expected_workload": "web_api",
     "expected_components": [
@@ -1167,31 +711,7 @@
     "base_id": "contradictory_webapp",
     "mode": "adversarial",
     "variant": 2,
-    "prompt": "Cheap but highly-available web app",
-    "base_prompt": "Cheap but highly-available web app",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "contradictory_webapp",
-    "mode": "adversarial",
-    "variant": 3,
     "prompt": "Cheap but highly-available web application",
-    "base_prompt": "Cheap but highly-available web app",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "contradictory_webapp",
-    "mode": "adversarial",
-    "variant": 4,
-    "prompt": "Cheap but highly-available web app",
     "base_prompt": "Cheap but highly-available web app",
     "expected_workload": "web_api",
     "expected_components": [
@@ -1203,7 +723,7 @@
     "base_id": "contradictory_webapp",
     "mode": "multilingual",
     "variant": 0,
-    "prompt": "Cheap but highly-available frontend + backend app",
+    "prompt": "Cheap but highly-available web application",
     "base_prompt": "Cheap but highly-available web app",
     "expected_workload": "web_api",
     "expected_components": [
@@ -1215,7 +735,7 @@
     "base_id": "contradictory_webapp",
     "mode": "multilingual",
     "variant": 1,
-    "prompt": "Cheap but highly-available frontend + backend app",
+    "prompt": "Cheap but highly-available web app",
     "base_prompt": "Cheap but highly-available web app",
     "expected_workload": "web_api",
     "expected_components": [
@@ -1227,30 +747,6 @@
     "base_id": "contradictory_webapp",
     "mode": "multilingual",
     "variant": 2,
-    "prompt": "Cheap but highly-available web app",
-    "base_prompt": "Cheap but highly-available web app",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "contradictory_webapp",
-    "mode": "multilingual",
-    "variant": 3,
-    "prompt": "Cheap but highly-available web app",
-    "base_prompt": "Cheap but highly-available web app",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "contradictory_webapp",
-    "mode": "multilingual",
-    "variant": 4,
     "prompt": "Cheap but highly-available web application",
     "base_prompt": "Cheap but highly-available web app",
     "expected_workload": "web_api",
@@ -1263,7 +759,7 @@
     "base_id": "contradictory_webapp",
     "mode": "noisy",
     "variant": 0,
-    "prompt": "Cheap but highly-available web application",
+    "prompt": "Cheap but highly-available web app",
     "base_prompt": "Cheap but highly-available web app",
     "expected_workload": "web_api",
     "expected_components": [
@@ -1296,97 +792,8 @@
     ]
   },
   {
-    "base_id": "contradictory_webapp",
-    "mode": "noisy",
-    "variant": 3,
-    "prompt": "Cheap but highly-available web app",
-    "base_prompt": "Cheap but highly-available web app",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "contradictory_webapp",
-    "mode": "noisy",
-    "variant": 4,
-    "prompt": "Cheap but highly-available web application",
-    "base_prompt": "Cheap but highly-available web app",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
     "base_id": "pci_payments",
     "mode": "paraphrase",
-    "variant": 0,
-    "prompt": "PCI-DSS payment processing service with tokenization, threat detection, and encrypted storage",
-    "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "pci_payments",
-    "mode": "paraphrase",
-    "variant": 1,
-    "prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
-    "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "pci_payments",
-    "mode": "paraphrase",
-    "variant": 2,
-    "prompt": "PCI-DSS payment processing service with tokenization, threat detection, and encrypted storage",
-    "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "pci_payments",
-    "mode": "paraphrase",
-    "variant": 3,
-    "prompt": "PCI-DSS payment processing REST API with tokenization, threat detection, and encrypted storage",
-    "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "pci_payments",
-    "mode": "paraphrase",
-    "variant": 4,
-    "prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
-    "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "pci_payments",
-    "mode": "adversarial",
     "variant": 0,
     "prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
     "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
@@ -1399,7 +806,7 @@
   },
   {
     "base_id": "pci_payments",
-    "mode": "adversarial",
+    "mode": "paraphrase",
     "variant": 1,
     "prompt": "PCI-DSS payment processing endpoint with tokenization, threat detection, and encrypted storage",
     "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
@@ -1412,9 +819,9 @@
   },
   {
     "base_id": "pci_payments",
-    "mode": "adversarial",
+    "mode": "paraphrase",
     "variant": 2,
-    "prompt": "PCI-DSS payment processing REST API with tokenization, threat detection, and encrypted storage",
+    "prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
     "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
     "expected_workload": "web_api",
     "expected_components": [
@@ -1426,7 +833,7 @@
   {
     "base_id": "pci_payments",
     "mode": "adversarial",
-    "variant": 3,
+    "variant": 0,
     "prompt": "PCI-DSS payment processing endpoint with tokenization, threat detection, and encrypted storage",
     "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
     "expected_workload": "web_api",
@@ -1439,8 +846,21 @@
   {
     "base_id": "pci_payments",
     "mode": "adversarial",
-    "variant": 4,
-    "prompt": "PCI-DSS payment processing REST API with tokenization, threat detection, and encrypted storage",
+    "variant": 1,
+    "prompt": "PCI-DSS payment processing service with tokenization, threat detection, and encrypted storage",
+    "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_guardduty_detector"
+    ]
+  },
+  {
+    "base_id": "pci_payments",
+    "mode": "adversarial",
+    "variant": 2,
+    "prompt": "PCI-DSS payment processing endpoint with tokenization, threat detection, and encrypted storage",
     "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
     "expected_workload": "web_api",
     "expected_components": [
@@ -1466,7 +886,7 @@
     "base_id": "pci_payments",
     "mode": "multilingual",
     "variant": 1,
-    "prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
+    "prompt": "PCI-DSS payment processing service with tokenization, threat detection, and encrypted storage",
     "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
     "expected_workload": "web_api",
     "expected_components": [
@@ -1479,32 +899,6 @@
     "base_id": "pci_payments",
     "mode": "multilingual",
     "variant": 2,
-    "prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
-    "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "pci_payments",
-    "mode": "multilingual",
-    "variant": 3,
-    "prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
-    "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "pci_payments",
-    "mode": "multilingual",
-    "variant": 4,
     "prompt": "PCI-DSS payment processing REST API with tokenization, threat detection, and encrypted storage",
     "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
     "expected_workload": "web_api",
@@ -1518,7 +912,7 @@
     "base_id": "pci_payments",
     "mode": "noisy",
     "variant": 0,
-    "prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
+    "prompt": "PCI-DSS payment processing REST API with tokenization, threat detection, and encrypted storage",
     "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
     "expected_workload": "web_api",
     "expected_components": [
@@ -1531,7 +925,7 @@
     "base_id": "pci_payments",
     "mode": "noisy",
     "variant": 1,
-    "prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
+    "prompt": "PCI-DSS payment processing REST API with tokenization, threat detection, and encrypted storage",
     "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
     "expected_workload": "web_api",
     "expected_components": [
@@ -1545,32 +939,6 @@
     "mode": "noisy",
     "variant": 2,
     "prompt": "PCI-DSS payment processing endpoint with tokenization, threat detection, and encrypted storage",
-    "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "pci_payments",
-    "mode": "noisy",
-    "variant": 3,
-    "prompt": "PCI-DSS payment processing service with tokenization, threat detection, and encrypted storage",
-    "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "pci_payments",
-    "mode": "noisy",
-    "variant": 4,
-    "prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
     "base_prompt": "PCI-DSS payment processing API with tokenization, threat detection, and encrypted storage",
     "expected_workload": "web_api",
     "expected_components": [
@@ -1583,7 +951,7 @@
     "base_id": "soc2_saas",
     "mode": "paraphrase",
     "variant": 0,
-    "prompt": "SOC2-ready B2B SaaS service with audit logging and strict password policies",
+    "prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
     "base_prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
     "expected_workload": "web_api",
     "expected_components": [
@@ -1597,7 +965,7 @@
     "base_id": "soc2_saas",
     "mode": "paraphrase",
     "variant": 1,
-    "prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
+    "prompt": "SOC2-ready B2B SaaS endpoint with audit logging and strict password policies",
     "base_prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
     "expected_workload": "web_api",
     "expected_components": [
@@ -1623,105 +991,7 @@
   },
   {
     "base_id": "soc2_saas",
-    "mode": "paraphrase",
-    "variant": 3,
-    "prompt": "SOC2-ready B2B SaaS REST API with audit logging and strict password policies",
-    "base_prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_iam_account_password_policy",
-      "aws_cloudwatch_log_group"
-    ]
-  },
-  {
-    "base_id": "soc2_saas",
-    "mode": "paraphrase",
-    "variant": 4,
-    "prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
-    "base_prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_iam_account_password_policy",
-      "aws_cloudwatch_log_group"
-    ]
-  },
-  {
-    "base_id": "soc2_saas",
     "mode": "adversarial",
-    "variant": 0,
-    "prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
-    "base_prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_iam_account_password_policy",
-      "aws_cloudwatch_log_group"
-    ]
-  },
-  {
-    "base_id": "soc2_saas",
-    "mode": "adversarial",
-    "variant": 1,
-    "prompt": "SOC2-ready B2B SaaS endpoint with audit logging and strict password policies",
-    "base_prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_iam_account_password_policy",
-      "aws_cloudwatch_log_group"
-    ]
-  },
-  {
-    "base_id": "soc2_saas",
-    "mode": "adversarial",
-    "variant": 2,
-    "prompt": "SOC2-ready B2B SaaS endpoint with audit logging and strict password policies",
-    "base_prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_iam_account_password_policy",
-      "aws_cloudwatch_log_group"
-    ]
-  },
-  {
-    "base_id": "soc2_saas",
-    "mode": "adversarial",
-    "variant": 3,
-    "prompt": "SOC2-ready B2B SaaS endpoint with audit logging and strict password policies",
-    "base_prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_iam_account_password_policy",
-      "aws_cloudwatch_log_group"
-    ]
-  },
-  {
-    "base_id": "soc2_saas",
-    "mode": "adversarial",
-    "variant": 4,
-    "prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
-    "base_prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_iam_account_password_policy",
-      "aws_cloudwatch_log_group"
-    ]
-  },
-  {
-    "base_id": "soc2_saas",
-    "mode": "multilingual",
     "variant": 0,
     "prompt": "SOC2-ready B2B SaaS service with audit logging and strict password policies",
     "base_prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
@@ -1735,6 +1005,48 @@
   },
   {
     "base_id": "soc2_saas",
+    "mode": "adversarial",
+    "variant": 1,
+    "prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
+    "base_prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_iam_account_password_policy",
+      "aws_cloudwatch_log_group"
+    ]
+  },
+  {
+    "base_id": "soc2_saas",
+    "mode": "adversarial",
+    "variant": 2,
+    "prompt": "SOC2-ready B2B SaaS REST API with audit logging and strict password policies",
+    "base_prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_iam_account_password_policy",
+      "aws_cloudwatch_log_group"
+    ]
+  },
+  {
+    "base_id": "soc2_saas",
+    "mode": "multilingual",
+    "variant": 0,
+    "prompt": "SOC2-ready B2B SaaS REST API with audit logging and strict password policies",
+    "base_prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_iam_account_password_policy",
+      "aws_cloudwatch_log_group"
+    ]
+  },
+  {
+    "base_id": "soc2_saas",
     "mode": "multilingual",
     "variant": 1,
     "prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
@@ -1751,34 +1063,6 @@
     "base_id": "soc2_saas",
     "mode": "multilingual",
     "variant": 2,
-    "prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
-    "base_prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_iam_account_password_policy",
-      "aws_cloudwatch_log_group"
-    ]
-  },
-  {
-    "base_id": "soc2_saas",
-    "mode": "multilingual",
-    "variant": 3,
-    "prompt": "SOC2-ready B2B SaaS REST API with audit logging and strict password policies",
-    "base_prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_iam_account_password_policy",
-      "aws_cloudwatch_log_group"
-    ]
-  },
-  {
-    "base_id": "soc2_saas",
-    "mode": "multilingual",
-    "variant": 4,
     "prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
     "base_prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
     "expected_workload": "web_api",
@@ -1821,34 +1105,6 @@
     "base_id": "soc2_saas",
     "mode": "noisy",
     "variant": 2,
-    "prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
-    "base_prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_iam_account_password_policy",
-      "aws_cloudwatch_log_group"
-    ]
-  },
-  {
-    "base_id": "soc2_saas",
-    "mode": "noisy",
-    "variant": 3,
-    "prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
-    "base_prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_iam_account_password_policy",
-      "aws_cloudwatch_log_group"
-    ]
-  },
-  {
-    "base_id": "soc2_saas",
-    "mode": "noisy",
-    "variant": 4,
     "prompt": "SOC2-ready B2B SaaS REST API with audit logging and strict password policies",
     "base_prompt": "SOC2-ready B2B SaaS API with audit logging and strict password policies",
     "expected_workload": "web_api",
@@ -1863,7 +1119,7 @@
     "base_id": "multi_region_saas",
     "mode": "paraphrase",
     "variant": 0,
-    "prompt": "Global SaaS service with multi-region active-passive failover and ~500k daily active users",
+    "prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
     "base_prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
     "expected_workload": "web_api",
     "expected_components": [
@@ -1889,33 +1145,7 @@
     "base_id": "multi_region_saas",
     "mode": "paraphrase",
     "variant": 2,
-    "prompt": "Global SaaS service with multi-region active-passive failover and ~500k daily active users",
-    "base_prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_route53_health_check"
-    ]
-  },
-  {
-    "base_id": "multi_region_saas",
-    "mode": "paraphrase",
-    "variant": 3,
-    "prompt": "Global SaaS service with multi-region active-passive failover and ~500k daily active users",
-    "base_prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_route53_health_check"
-    ]
-  },
-  {
-    "base_id": "multi_region_saas",
-    "mode": "paraphrase",
-    "variant": 4,
-    "prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
+    "prompt": "Global SaaS endpoint with multi-region active-passive failover and ~500k daily active users",
     "base_prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
     "expected_workload": "web_api",
     "expected_components": [
@@ -1928,7 +1158,7 @@
     "base_id": "multi_region_saas",
     "mode": "adversarial",
     "variant": 0,
-    "prompt": "Global SaaS REST API with multi-region active-passive failover and ~500k daily active users",
+    "prompt": "Global SaaS endpoint with multi-region active-passive failover and ~500k daily active users",
     "base_prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
     "expected_workload": "web_api",
     "expected_components": [
@@ -1954,33 +1184,7 @@
     "base_id": "multi_region_saas",
     "mode": "adversarial",
     "variant": 2,
-    "prompt": "Global SaaS REST API with multi-region active-passive failover and ~500k daily active users",
-    "base_prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_route53_health_check"
-    ]
-  },
-  {
-    "base_id": "multi_region_saas",
-    "mode": "adversarial",
-    "variant": 3,
     "prompt": "Global SaaS service with multi-region active-passive failover and ~500k daily active users",
-    "base_prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_route53_health_check"
-    ]
-  },
-  {
-    "base_id": "multi_region_saas",
-    "mode": "adversarial",
-    "variant": 4,
-    "prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
     "base_prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
     "expected_workload": "web_api",
     "expected_components": [
@@ -1993,32 +1197,6 @@
     "base_id": "multi_region_saas",
     "mode": "multilingual",
     "variant": 0,
-    "prompt": "Global SaaS endpoint with multi-region active-passive failover and ~500k daily active users",
-    "base_prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_route53_health_check"
-    ]
-  },
-  {
-    "base_id": "multi_region_saas",
-    "mode": "multilingual",
-    "variant": 1,
-    "prompt": "Global SaaS endpoint with multi-region active-passive failover and ~500k daily active users",
-    "base_prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_route53_health_check"
-    ]
-  },
-  {
-    "base_id": "multi_region_saas",
-    "mode": "multilingual",
-    "variant": 2,
     "prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
     "base_prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
     "expected_workload": "web_api",
@@ -2031,7 +1209,7 @@
   {
     "base_id": "multi_region_saas",
     "mode": "multilingual",
-    "variant": 3,
+    "variant": 1,
     "prompt": "Global SaaS REST API with multi-region active-passive failover and ~500k daily active users",
     "base_prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
     "expected_workload": "web_api",
@@ -2044,7 +1222,7 @@
   {
     "base_id": "multi_region_saas",
     "mode": "multilingual",
-    "variant": 4,
+    "variant": 2,
     "prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
     "base_prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
     "expected_workload": "web_api",
@@ -2071,19 +1249,6 @@
     "base_id": "multi_region_saas",
     "mode": "noisy",
     "variant": 1,
-    "prompt": "Global SaaS endpoint with multi-region active-passive failover and ~500k daily active users",
-    "base_prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_route53_health_check"
-    ]
-  },
-  {
-    "base_id": "multi_region_saas",
-    "mode": "noisy",
-    "variant": 2,
     "prompt": "Global SaaS service with multi-region active-passive failover and ~500k daily active users",
     "base_prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
     "expected_workload": "web_api",
@@ -2096,21 +1261,8 @@
   {
     "base_id": "multi_region_saas",
     "mode": "noisy",
-    "variant": 3,
-    "prompt": "Global SaaS service with multi-region active-passive failover and ~500k daily active users",
-    "base_prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_route53_health_check"
-    ]
-  },
-  {
-    "base_id": "multi_region_saas",
-    "mode": "noisy",
-    "variant": 4,
-    "prompt": "Global SaaS endpoint with multi-region active-passive failover and ~500k daily active users",
+    "variant": 2,
+    "prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
     "base_prompt": "Global SaaS API with multi-region active-passive failover and ~500k daily active users",
     "expected_workload": "web_api",
     "expected_components": [
@@ -2123,12 +1275,12 @@
     "base_id": "ml_training_cv",
     "mode": "paraphrase",
     "variant": 0,
-    "prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
+    "prompt": "ML training data flow for a computer vision model, weekly retrain on 2TB of images",
     "base_prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
       "aws_ecr_repository"
     ]
   },
@@ -2136,12 +1288,12 @@
     "base_id": "ml_training_cv",
     "mode": "paraphrase",
     "variant": 1,
-    "prompt": "ML training ETL for a computer vision model, weekly retrain on 2TB of images",
+    "prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
     "base_prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
       "aws_ecr_repository"
     ]
   },
@@ -2154,33 +1306,7 @@
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_ecr_repository"
-    ]
-  },
-  {
-    "base_id": "ml_training_cv",
-    "mode": "paraphrase",
-    "variant": 3,
-    "prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
-    "base_prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_ecr_repository"
-    ]
-  },
-  {
-    "base_id": "ml_training_cv",
-    "mode": "paraphrase",
-    "variant": 4,
-    "prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
-    "base_prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
       "aws_ecr_repository"
     ]
   },
@@ -2188,12 +1314,12 @@
     "base_id": "ml_training_cv",
     "mode": "adversarial",
     "variant": 0,
-    "prompt": "ML training data flow for a computer vision model, weekly retrain on 2TB of images",
+    "prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
     "base_prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
       "aws_ecr_repository"
     ]
   },
@@ -2201,12 +1327,12 @@
     "base_id": "ml_training_cv",
     "mode": "adversarial",
     "variant": 1,
-    "prompt": "ML training data flow for a computer vision model, weekly retrain on 2TB of images",
+    "prompt": "ML training ETL for a computer vision model, weekly retrain on 2TB of images",
     "base_prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
       "aws_ecr_repository"
     ]
   },
@@ -2214,38 +1340,12 @@
     "base_id": "ml_training_cv",
     "mode": "adversarial",
     "variant": 2,
-    "prompt": "ML training data flow for a computer vision model, weekly retrain on 2TB of images",
-    "base_prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_ecr_repository"
-    ]
-  },
-  {
-    "base_id": "ml_training_cv",
-    "mode": "adversarial",
-    "variant": 3,
-    "prompt": "ML training data flow for a computer vision model, weekly retrain on 2TB of images",
-    "base_prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_ecr_repository"
-    ]
-  },
-  {
-    "base_id": "ml_training_cv",
-    "mode": "adversarial",
-    "variant": 4,
     "prompt": "ML training ETL for a computer vision model, weekly retrain on 2TB of images",
     "base_prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
       "aws_ecr_repository"
     ]
   },
@@ -2253,12 +1353,12 @@
     "base_id": "ml_training_cv",
     "mode": "multilingual",
     "variant": 0,
-    "prompt": "ML training ETL for a computer vision model, weekly retrain on 2TB of images",
+    "prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
     "base_prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
       "aws_ecr_repository"
     ]
   },
@@ -2271,7 +1371,7 @@
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
       "aws_ecr_repository"
     ]
   },
@@ -2279,38 +1379,12 @@
     "base_id": "ml_training_cv",
     "mode": "multilingual",
     "variant": 2,
-    "prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
-    "base_prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_ecr_repository"
-    ]
-  },
-  {
-    "base_id": "ml_training_cv",
-    "mode": "multilingual",
-    "variant": 3,
     "prompt": "ML training data flow for a computer vision model, weekly retrain on 2TB of images",
     "base_prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_ecr_repository"
-    ]
-  },
-  {
-    "base_id": "ml_training_cv",
-    "mode": "multilingual",
-    "variant": 4,
-    "prompt": "ML training ETL for a computer vision model, weekly retrain on 2TB of images",
-    "base_prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
       "aws_ecr_repository"
     ]
   },
@@ -2323,7 +1397,7 @@
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
       "aws_ecr_repository"
     ]
   },
@@ -2336,7 +1410,7 @@
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
       "aws_ecr_repository"
     ]
   },
@@ -2344,38 +1418,12 @@
     "base_id": "ml_training_cv",
     "mode": "noisy",
     "variant": 2,
-    "prompt": "ML training data flow for a computer vision model, weekly retrain on 2TB of images",
-    "base_prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_ecr_repository"
-    ]
-  },
-  {
-    "base_id": "ml_training_cv",
-    "mode": "noisy",
-    "variant": 3,
     "prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
     "base_prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_ecr_repository"
-    ]
-  },
-  {
-    "base_id": "ml_training_cv",
-    "mode": "noisy",
-    "variant": 4,
-    "prompt": "ML training data flow for a computer vision model, weekly retrain on 2TB of images",
-    "base_prompt": "ML training pipeline for a computer vision model, weekly retrain on 2TB of images",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
       "aws_ecr_repository"
     ]
   },
@@ -2420,32 +1468,6 @@
   },
   {
     "base_id": "static_marketing",
-    "mode": "paraphrase",
-    "variant": 3,
-    "prompt": "Marketing static site with global CDN, custom domain, HTTPS",
-    "base_prompt": "Marketing static site with global CDN, custom domain, HTTPS",
-    "expected_workload": "static_site",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_cloudfront_distribution",
-      "aws_route53_zone"
-    ]
-  },
-  {
-    "base_id": "static_marketing",
-    "mode": "paraphrase",
-    "variant": 4,
-    "prompt": "Marketing static site with global CDN, custom domain, HTTPS",
-    "base_prompt": "Marketing static site with global CDN, custom domain, HTTPS",
-    "expected_workload": "static_site",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_cloudfront_distribution",
-      "aws_route53_zone"
-    ]
-  },
-  {
-    "base_id": "static_marketing",
     "mode": "adversarial",
     "variant": 0,
     "prompt": "Marketing static site with global CDN, custom domain, HTTPS",
@@ -2474,32 +1496,6 @@
     "base_id": "static_marketing",
     "mode": "adversarial",
     "variant": 2,
-    "prompt": "Marketing static site with global CDN, custom domain, HTTPS",
-    "base_prompt": "Marketing static site with global CDN, custom domain, HTTPS",
-    "expected_workload": "static_site",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_cloudfront_distribution",
-      "aws_route53_zone"
-    ]
-  },
-  {
-    "base_id": "static_marketing",
-    "mode": "adversarial",
-    "variant": 3,
-    "prompt": "Marketing static site with global CDN, custom domain, HTTPS",
-    "base_prompt": "Marketing static site with global CDN, custom domain, HTTPS",
-    "expected_workload": "static_site",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_cloudfront_distribution",
-      "aws_route53_zone"
-    ]
-  },
-  {
-    "base_id": "static_marketing",
-    "mode": "adversarial",
-    "variant": 4,
     "prompt": "Marketing static site with global CDN, custom domain, HTTPS",
     "base_prompt": "Marketing static site with global CDN, custom domain, HTTPS",
     "expected_workload": "static_site",
@@ -2550,32 +1546,6 @@
   },
   {
     "base_id": "static_marketing",
-    "mode": "multilingual",
-    "variant": 3,
-    "prompt": "Marketing static site with global CDN, custom domain, HTTPS",
-    "base_prompt": "Marketing static site with global CDN, custom domain, HTTPS",
-    "expected_workload": "static_site",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_cloudfront_distribution",
-      "aws_route53_zone"
-    ]
-  },
-  {
-    "base_id": "static_marketing",
-    "mode": "multilingual",
-    "variant": 4,
-    "prompt": "Marketing static site with global CDN, custom domain, HTTPS",
-    "base_prompt": "Marketing static site with global CDN, custom domain, HTTPS",
-    "expected_workload": "static_site",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_cloudfront_distribution",
-      "aws_route53_zone"
-    ]
-  },
-  {
-    "base_id": "static_marketing",
     "mode": "noisy",
     "variant": 0,
     "prompt": "Marketing static site with global CDN, custom domain, HTTPS",
@@ -2604,32 +1574,6 @@
     "base_id": "static_marketing",
     "mode": "noisy",
     "variant": 2,
-    "prompt": "Marketing static site with global CDN, custom domain, HTTPS",
-    "base_prompt": "Marketing static site with global CDN, custom domain, HTTPS",
-    "expected_workload": "static_site",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_cloudfront_distribution",
-      "aws_route53_zone"
-    ]
-  },
-  {
-    "base_id": "static_marketing",
-    "mode": "noisy",
-    "variant": 3,
-    "prompt": "Marketing static site with global CDN, custom domain, HTTPS",
-    "base_prompt": "Marketing static site with global CDN, custom domain, HTTPS",
-    "expected_workload": "static_site",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_cloudfront_distribution",
-      "aws_route53_zone"
-    ]
-  },
-  {
-    "base_id": "static_marketing",
-    "mode": "noisy",
-    "variant": 4,
     "prompt": "Marketing static site with global CDN, custom domain, HTTPS",
     "base_prompt": "Marketing static site with global CDN, custom domain, HTTPS",
     "expected_workload": "static_site",
@@ -2643,7 +1587,7 @@
     "base_id": "iot_telemetry",
     "mode": "paraphrase",
     "variant": 0,
-    "prompt": "IoT telemetry ingestion ETL with hourly batch rollups into a data lake",
+    "prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
     "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
     "expected_workload": "data_pipeline",
     "expected_components": [
@@ -2667,31 +1611,7 @@
     "base_id": "iot_telemetry",
     "mode": "paraphrase",
     "variant": 2,
-    "prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job"
-    ]
-  },
-  {
-    "base_id": "iot_telemetry",
-    "mode": "paraphrase",
-    "variant": 3,
-    "prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job"
-    ]
-  },
-  {
-    "base_id": "iot_telemetry",
-    "mode": "paraphrase",
-    "variant": 4,
-    "prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
+    "prompt": "IoT telemetry ingestion ETL with hourly batch rollups into a data lake",
     "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
     "expected_workload": "data_pipeline",
     "expected_components": [
@@ -2703,7 +1623,7 @@
     "base_id": "iot_telemetry",
     "mode": "adversarial",
     "variant": 0,
-    "prompt": "IoT telemetry ingestion ETL with hourly batch rollups into a data lake",
+    "prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
     "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
     "expected_workload": "data_pipeline",
     "expected_components": [
@@ -2715,18 +1635,6 @@
     "base_id": "iot_telemetry",
     "mode": "adversarial",
     "variant": 1,
-    "prompt": "IoT telemetry ingestion data flow with hourly batch rollups into a data lake",
-    "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job"
-    ]
-  },
-  {
-    "base_id": "iot_telemetry",
-    "mode": "adversarial",
-    "variant": 2,
     "prompt": "IoT telemetry ingestion ETL with hourly batch rollups into a data lake",
     "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
     "expected_workload": "data_pipeline",
@@ -2738,114 +1646,6 @@
   {
     "base_id": "iot_telemetry",
     "mode": "adversarial",
-    "variant": 3,
-    "prompt": "IoT telemetry ingestion ETL with hourly batch rollups into a data lake",
-    "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job"
-    ]
-  },
-  {
-    "base_id": "iot_telemetry",
-    "mode": "adversarial",
-    "variant": 4,
-    "prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job"
-    ]
-  },
-  {
-    "base_id": "iot_telemetry",
-    "mode": "multilingual",
-    "variant": 0,
-    "prompt": "IoT telemetry ingestion ETL with hourly batch rollups into a data lake",
-    "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job"
-    ]
-  },
-  {
-    "base_id": "iot_telemetry",
-    "mode": "multilingual",
-    "variant": 1,
-    "prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job"
-    ]
-  },
-  {
-    "base_id": "iot_telemetry",
-    "mode": "multilingual",
-    "variant": 2,
-    "prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job"
-    ]
-  },
-  {
-    "base_id": "iot_telemetry",
-    "mode": "multilingual",
-    "variant": 3,
-    "prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job"
-    ]
-  },
-  {
-    "base_id": "iot_telemetry",
-    "mode": "multilingual",
-    "variant": 4,
-    "prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job"
-    ]
-  },
-  {
-    "base_id": "iot_telemetry",
-    "mode": "noisy",
-    "variant": 0,
-    "prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job"
-    ]
-  },
-  {
-    "base_id": "iot_telemetry",
-    "mode": "noisy",
-    "variant": 1,
-    "prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
-    "expected_workload": "data_pipeline",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_glue_job"
-    ]
-  },
-  {
-    "base_id": "iot_telemetry",
-    "mode": "noisy",
     "variant": 2,
     "prompt": "IoT telemetry ingestion data flow with hourly batch rollups into a data lake",
     "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
@@ -2857,8 +1657,32 @@
   },
   {
     "base_id": "iot_telemetry",
-    "mode": "noisy",
-    "variant": 3,
+    "mode": "multilingual",
+    "variant": 0,
+    "prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
+    "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
+    "expected_workload": "data_pipeline",
+    "expected_components": [
+      "aws_s3_bucket",
+      "aws_glue_job"
+    ]
+  },
+  {
+    "base_id": "iot_telemetry",
+    "mode": "multilingual",
+    "variant": 1,
+    "prompt": "IoT telemetry ingestion data flow with hourly batch rollups into a data lake",
+    "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
+    "expected_workload": "data_pipeline",
+    "expected_components": [
+      "aws_s3_bucket",
+      "aws_glue_job"
+    ]
+  },
+  {
+    "base_id": "iot_telemetry",
+    "mode": "multilingual",
+    "variant": 2,
     "prompt": "IoT telemetry ingestion ETL with hourly batch rollups into a data lake",
     "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
     "expected_workload": "data_pipeline",
@@ -2870,7 +1694,31 @@
   {
     "base_id": "iot_telemetry",
     "mode": "noisy",
-    "variant": 4,
+    "variant": 0,
+    "prompt": "IoT telemetry ingestion data flow with hourly batch rollups into a data lake",
+    "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
+    "expected_workload": "data_pipeline",
+    "expected_components": [
+      "aws_s3_bucket",
+      "aws_glue_job"
+    ]
+  },
+  {
+    "base_id": "iot_telemetry",
+    "mode": "noisy",
+    "variant": 1,
+    "prompt": "IoT telemetry ingestion data flow with hourly batch rollups into a data lake",
+    "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
+    "expected_workload": "data_pipeline",
+    "expected_components": [
+      "aws_s3_bucket",
+      "aws_glue_job"
+    ]
+  },
+  {
+    "base_id": "iot_telemetry",
+    "mode": "noisy",
+    "variant": 2,
     "prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
     "base_prompt": "IoT telemetry ingestion pipeline with hourly batch rollups into a data lake",
     "expected_workload": "data_pipeline",
@@ -2883,264 +1731,124 @@
     "base_id": "healthcare_ml",
     "mode": "paraphrase",
     "variant": 0,
-    "prompt": "PHI-handling-compliant ML training pipeline over encrypted patient imaging data",
-    "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "healthcare_ml",
-    "mode": "paraphrase",
-    "variant": 1,
-    "prompt": "HIPAA-compliant ML training ETL over encrypted patient imaging data",
-    "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "healthcare_ml",
-    "mode": "paraphrase",
-    "variant": 2,
-    "prompt": "regulated healthcare-compliant ML training data flow over encrypted patient imaging data",
-    "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "healthcare_ml",
-    "mode": "paraphrase",
-    "variant": 3,
-    "prompt": "PHI-handling-compliant ML training data flow over encrypted patient imaging data",
-    "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "healthcare_ml",
-    "mode": "paraphrase",
-    "variant": 4,
-    "prompt": "PHI-handling-compliant ML training pipeline over encrypted patient imaging data",
-    "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "healthcare_ml",
-    "mode": "adversarial",
-    "variant": 0,
-    "prompt": "PHI-handling-compliant ML training pipeline over encrypted patient imaging data",
-    "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "healthcare_ml",
-    "mode": "adversarial",
-    "variant": 1,
-    "prompt": "HIPAA-compliant ML training ETL over encrypted patient imaging data",
-    "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "healthcare_ml",
-    "mode": "adversarial",
-    "variant": 2,
-    "prompt": "PHI-handling-compliant ML training data flow over encrypted patient imaging data",
-    "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "healthcare_ml",
-    "mode": "adversarial",
-    "variant": 3,
     "prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
     "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
       "aws_kms_key",
       "aws_cloudtrail"
     ]
   },
   {
     "base_id": "healthcare_ml",
-    "mode": "adversarial",
-    "variant": 4,
-    "prompt": "regulated healthcare-compliant ML training pipeline over encrypted patient imaging data",
-    "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "healthcare_ml",
-    "mode": "multilingual",
-    "variant": 0,
-    "prompt": "regulated healthcare-compliant ML training pipeline over encrypted patient imaging data",
-    "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "healthcare_ml",
-    "mode": "multilingual",
+    "mode": "paraphrase",
     "variant": 1,
     "prompt": "PHI-handling-compliant ML training pipeline over encrypted patient imaging data",
     "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
       "aws_kms_key",
       "aws_cloudtrail"
     ]
   },
   {
     "base_id": "healthcare_ml",
-    "mode": "multilingual",
+    "mode": "paraphrase",
     "variant": 2,
     "prompt": "PHI-handling-compliant ML training ETL over encrypted patient imaging data",
     "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
       "aws_kms_key",
       "aws_cloudtrail"
     ]
   },
   {
     "base_id": "healthcare_ml",
-    "mode": "multilingual",
-    "variant": 3,
-    "prompt": "regulated healthcare-compliant ML training pipeline over encrypted patient imaging data",
-    "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "healthcare_ml",
-    "mode": "multilingual",
-    "variant": 4,
+    "mode": "adversarial",
+    "variant": 0,
     "prompt": "HIPAA-compliant ML training ETL over encrypted patient imaging data",
     "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
       "aws_kms_key",
       "aws_cloudtrail"
     ]
   },
   {
     "base_id": "healthcare_ml",
-    "mode": "noisy",
-    "variant": 0,
-    "prompt": "regulated healthcare-compliant ML training data flow over encrypted patient imaging data",
-    "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
-    "expected_workload": "ml_training",
-    "expected_components": [
-      "aws_s3_bucket",
-      "aws_sagemaker_training_job",
-      "aws_kms_key",
-      "aws_cloudtrail"
-    ]
-  },
-  {
-    "base_id": "healthcare_ml",
-    "mode": "noisy",
+    "mode": "adversarial",
     "variant": 1,
-    "prompt": "regulated healthcare-compliant ML training data flow over encrypted patient imaging data",
+    "prompt": "HIPAA-compliant ML training ETL over encrypted patient imaging data",
     "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
       "aws_kms_key",
       "aws_cloudtrail"
     ]
   },
   {
     "base_id": "healthcare_ml",
-    "mode": "noisy",
+    "mode": "adversarial",
     "variant": 2,
+    "prompt": "regulated healthcare-compliant ML training data flow over encrypted patient imaging data",
+    "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
+    "expected_workload": "ml_training",
+    "expected_components": [
+      "aws_s3_bucket",
+      "aws_sagemaker_model",
+      "aws_kms_key",
+      "aws_cloudtrail"
+    ]
+  },
+  {
+    "base_id": "healthcare_ml",
+    "mode": "multilingual",
+    "variant": 0,
     "prompt": "PHI-handling-compliant ML training data flow over encrypted patient imaging data",
     "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
       "aws_kms_key",
       "aws_cloudtrail"
     ]
   },
   {
     "base_id": "healthcare_ml",
-    "mode": "noisy",
-    "variant": 3,
+    "mode": "multilingual",
+    "variant": 1,
     "prompt": "HIPAA-compliant ML training ETL over encrypted patient imaging data",
     "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
+      "aws_kms_key",
+      "aws_cloudtrail"
+    ]
+  },
+  {
+    "base_id": "healthcare_ml",
+    "mode": "multilingual",
+    "variant": 2,
+    "prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
+    "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
+    "expected_workload": "ml_training",
+    "expected_components": [
+      "aws_s3_bucket",
+      "aws_sagemaker_model",
       "aws_kms_key",
       "aws_cloudtrail"
     ]
@@ -3148,13 +1856,41 @@
   {
     "base_id": "healthcare_ml",
     "mode": "noisy",
-    "variant": 4,
-    "prompt": "regulated healthcare-compliant ML training data flow over encrypted patient imaging data",
+    "variant": 0,
+    "prompt": "regulated healthcare-compliant ML training pipeline over encrypted patient imaging data",
     "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
     "expected_workload": "ml_training",
     "expected_components": [
       "aws_s3_bucket",
-      "aws_sagemaker_training_job",
+      "aws_sagemaker_model",
+      "aws_kms_key",
+      "aws_cloudtrail"
+    ]
+  },
+  {
+    "base_id": "healthcare_ml",
+    "mode": "noisy",
+    "variant": 1,
+    "prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
+    "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
+    "expected_workload": "ml_training",
+    "expected_components": [
+      "aws_s3_bucket",
+      "aws_sagemaker_model",
+      "aws_kms_key",
+      "aws_cloudtrail"
+    ]
+  },
+  {
+    "base_id": "healthcare_ml",
+    "mode": "noisy",
+    "variant": 2,
+    "prompt": "PHI-handling-compliant ML training ETL over encrypted patient imaging data",
+    "base_prompt": "HIPAA-compliant ML training pipeline over encrypted patient imaging data",
+    "expected_workload": "ml_training",
+    "expected_components": [
+      "aws_s3_bucket",
+      "aws_sagemaker_model",
       "aws_kms_key",
       "aws_cloudtrail"
     ]
@@ -3175,7 +1911,7 @@
     "base_id": "internal_crud",
     "mode": "paraphrase",
     "variant": 1,
-    "prompt": "Internal CRUD REST API for a 50-person company, minimal cost, single region",
+    "prompt": "Internal CRUD service for a 50-person company, minimal cost, single region",
     "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
     "expected_workload": "web_api",
     "expected_components": [
@@ -3188,30 +1924,6 @@
     "mode": "paraphrase",
     "variant": 2,
     "prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "internal_crud",
-    "mode": "paraphrase",
-    "variant": 3,
-    "prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "internal_crud",
-    "mode": "paraphrase",
-    "variant": 4,
-    "prompt": "Internal CRUD REST API for a 50-person company, minimal cost, single region",
     "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
     "expected_workload": "web_api",
     "expected_components": [
@@ -3234,6 +1946,42 @@
   {
     "base_id": "internal_crud",
     "mode": "adversarial",
+    "variant": 1,
+    "prompt": "Internal CRUD REST API for a 50-person company, minimal cost, single region",
+    "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function"
+    ]
+  },
+  {
+    "base_id": "internal_crud",
+    "mode": "adversarial",
+    "variant": 2,
+    "prompt": "Internal CRUD service for a 50-person company, minimal cost, single region",
+    "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function"
+    ]
+  },
+  {
+    "base_id": "internal_crud",
+    "mode": "multilingual",
+    "variant": 0,
+    "prompt": "Internal CRUD REST API for a 50-person company, minimal cost, single region",
+    "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function"
+    ]
+  },
+  {
+    "base_id": "internal_crud",
+    "mode": "multilingual",
     "variant": 1,
     "prompt": "Internal CRUD service for a 50-person company, minimal cost, single region",
     "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
@@ -3245,20 +1993,8 @@
   },
   {
     "base_id": "internal_crud",
-    "mode": "adversarial",
+    "mode": "multilingual",
     "variant": 2,
-    "prompt": "Internal CRUD endpoint for a 50-person company, minimal cost, single region",
-    "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "internal_crud",
-    "mode": "adversarial",
-    "variant": 3,
     "prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
     "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
     "expected_workload": "web_api",
@@ -3269,68 +2005,8 @@
   },
   {
     "base_id": "internal_crud",
-    "mode": "adversarial",
-    "variant": 4,
-    "prompt": "Internal CRUD REST API for a 50-person company, minimal cost, single region",
-    "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "internal_crud",
-    "mode": "multilingual",
+    "mode": "noisy",
     "variant": 0,
-    "prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "internal_crud",
-    "mode": "multilingual",
-    "variant": 1,
-    "prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "internal_crud",
-    "mode": "multilingual",
-    "variant": 2,
-    "prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "internal_crud",
-    "mode": "multilingual",
-    "variant": 3,
-    "prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "internal_crud",
-    "mode": "multilingual",
-    "variant": 4,
     "prompt": "Internal CRUD endpoint for a 50-person company, minimal cost, single region",
     "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
     "expected_workload": "web_api",
@@ -3342,20 +2018,8 @@
   {
     "base_id": "internal_crud",
     "mode": "noisy",
-    "variant": 0,
-    "prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "internal_crud",
-    "mode": "noisy",
     "variant": 1,
-    "prompt": "Internal CRUD service for a 50-person company, minimal cost, single region",
+    "prompt": "Internal CRUD endpoint for a 50-person company, minimal cost, single region",
     "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
     "expected_workload": "web_api",
     "expected_components": [
@@ -3376,34 +2040,10 @@
     ]
   },
   {
-    "base_id": "internal_crud",
-    "mode": "noisy",
-    "variant": 3,
-    "prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
-    "base_id": "internal_crud",
-    "mode": "noisy",
-    "variant": 4,
-    "prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "base_prompt": "Internal CRUD API for a 50-person company, minimal cost, single region",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function"
-    ]
-  },
-  {
     "base_id": "gaming_leaderboard",
     "mode": "paraphrase",
     "variant": 0,
-    "prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
+    "prompt": "Real-time gaming leaderboard REST API handling millions of requests per day with low-latency reads",
     "base_prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
     "expected_workload": "web_api",
     "expected_components": [
@@ -3416,7 +2056,7 @@
     "base_id": "gaming_leaderboard",
     "mode": "paraphrase",
     "variant": 1,
-    "prompt": "Real-time gaming leaderboard endpoint handling millions of requests per day with low-latency reads",
+    "prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
     "base_prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
     "expected_workload": "web_api",
     "expected_components": [
@@ -3440,32 +2080,6 @@
   },
   {
     "base_id": "gaming_leaderboard",
-    "mode": "paraphrase",
-    "variant": 3,
-    "prompt": "Real-time gaming leaderboard endpoint handling millions of requests per day with low-latency reads",
-    "base_prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table"
-    ]
-  },
-  {
-    "base_id": "gaming_leaderboard",
-    "mode": "paraphrase",
-    "variant": 4,
-    "prompt": "Real-time gaming leaderboard REST API handling millions of requests per day with low-latency reads",
-    "base_prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table"
-    ]
-  },
-  {
-    "base_id": "gaming_leaderboard",
     "mode": "adversarial",
     "variant": 0,
     "prompt": "Real-time gaming leaderboard endpoint handling millions of requests per day with low-latency reads",
@@ -3481,7 +2095,7 @@
     "base_id": "gaming_leaderboard",
     "mode": "adversarial",
     "variant": 1,
-    "prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
+    "prompt": "Real-time gaming leaderboard service handling millions of requests per day with low-latency reads",
     "base_prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
     "expected_workload": "web_api",
     "expected_components": [
@@ -3505,47 +2119,8 @@
   },
   {
     "base_id": "gaming_leaderboard",
-    "mode": "adversarial",
-    "variant": 3,
-    "prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
-    "base_prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table"
-    ]
-  },
-  {
-    "base_id": "gaming_leaderboard",
-    "mode": "adversarial",
-    "variant": 4,
-    "prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
-    "base_prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table"
-    ]
-  },
-  {
-    "base_id": "gaming_leaderboard",
     "mode": "multilingual",
     "variant": 0,
-    "prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
-    "base_prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table"
-    ]
-  },
-  {
-    "base_id": "gaming_leaderboard",
-    "mode": "multilingual",
-    "variant": 1,
     "prompt": "Real-time gaming leaderboard endpoint handling millions of requests per day with low-latency reads",
     "base_prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
     "expected_workload": "web_api",
@@ -3558,46 +2133,20 @@
   {
     "base_id": "gaming_leaderboard",
     "mode": "multilingual",
+    "variant": 1,
+    "prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
+    "base_prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_dynamodb_table"
+    ]
+  },
+  {
+    "base_id": "gaming_leaderboard",
+    "mode": "multilingual",
     "variant": 2,
-    "prompt": "Real-time gaming leaderboard REST API handling millions of requests per day with low-latency reads",
-    "base_prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table"
-    ]
-  },
-  {
-    "base_id": "gaming_leaderboard",
-    "mode": "multilingual",
-    "variant": 3,
-    "prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
-    "base_prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table"
-    ]
-  },
-  {
-    "base_id": "gaming_leaderboard",
-    "mode": "multilingual",
-    "variant": 4,
-    "prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
-    "base_prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table"
-    ]
-  },
-  {
-    "base_id": "gaming_leaderboard",
-    "mode": "noisy",
-    "variant": 0,
     "prompt": "Real-time gaming leaderboard service handling millions of requests per day with low-latency reads",
     "base_prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
     "expected_workload": "web_api",
@@ -3610,6 +2159,19 @@
   {
     "base_id": "gaming_leaderboard",
     "mode": "noisy",
+    "variant": 0,
+    "prompt": "Real-time gaming leaderboard REST API handling millions of requests per day with low-latency reads",
+    "base_prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_dynamodb_table"
+    ]
+  },
+  {
+    "base_id": "gaming_leaderboard",
+    "mode": "noisy",
     "variant": 1,
     "prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
     "base_prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
@@ -3624,32 +2186,6 @@
     "base_id": "gaming_leaderboard",
     "mode": "noisy",
     "variant": 2,
-    "prompt": "Real-time gaming leaderboard REST API handling millions of requests per day with low-latency reads",
-    "base_prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table"
-    ]
-  },
-  {
-    "base_id": "gaming_leaderboard",
-    "mode": "noisy",
-    "variant": 3,
-    "prompt": "Real-time gaming leaderboard endpoint handling millions of requests per day with low-latency reads",
-    "base_prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_dynamodb_table"
-    ]
-  },
-  {
-    "base_id": "gaming_leaderboard",
-    "mode": "noisy",
-    "variant": 4,
     "prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
     "base_prompt": "Real-time gaming leaderboard API handling millions of requests per day with low-latency reads",
     "expected_workload": "web_api",
@@ -3663,36 +2199,6 @@
     "base_id": "fintech_hipaa_pci",
     "mode": "paraphrase",
     "variant": 0,
-    "prompt": "Fintech endpoint handling both health-insurance claims (HIPAA) and card payments (PCI), highly available",
-    "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_kms_key",
-      "aws_cloudtrail",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "fintech_hipaa_pci",
-    "mode": "paraphrase",
-    "variant": 1,
-    "prompt": "Fintech service handling both health-insurance claims (regulated healthcare) and card payments (PCI), redundant across zones",
-    "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_kms_key",
-      "aws_cloudtrail",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "fintech_hipaa_pci",
-    "mode": "paraphrase",
-    "variant": 2,
     "prompt": "Fintech API handling both health-insurance claims (PHI-handling) and card payments (PCI), highly available",
     "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
     "expected_workload": "web_api",
@@ -3707,8 +2213,8 @@
   {
     "base_id": "fintech_hipaa_pci",
     "mode": "paraphrase",
-    "variant": 3,
-    "prompt": "Fintech endpoint handling both health-insurance claims (HIPAA) and card payments (PCI), highly available",
+    "variant": 1,
+    "prompt": "Fintech endpoint handling both health-insurance claims (regulated healthcare) and card payments (PCI), highly available",
     "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
     "expected_workload": "web_api",
     "expected_components": [
@@ -3722,8 +2228,8 @@
   {
     "base_id": "fintech_hipaa_pci",
     "mode": "paraphrase",
-    "variant": 4,
-    "prompt": "Fintech endpoint handling both health-insurance claims (HIPAA) and card payments (PCI), highly available",
+    "variant": 2,
+    "prompt": "Fintech service handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
     "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
     "expected_workload": "web_api",
     "expected_components": [
@@ -3737,6 +2243,51 @@
   {
     "base_id": "fintech_hipaa_pci",
     "mode": "adversarial",
+    "variant": 0,
+    "prompt": "Fintech endpoint handling both health-insurance claims (PHI-handling) and card payments (PCI), redundant across zones",
+    "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_kms_key",
+      "aws_cloudtrail",
+      "aws_guardduty_detector"
+    ]
+  },
+  {
+    "base_id": "fintech_hipaa_pci",
+    "mode": "adversarial",
+    "variant": 1,
+    "prompt": "Fintech service handling both health-insurance claims (HIPAA) and card payments (PCI), highly available",
+    "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_kms_key",
+      "aws_cloudtrail",
+      "aws_guardduty_detector"
+    ]
+  },
+  {
+    "base_id": "fintech_hipaa_pci",
+    "mode": "adversarial",
+    "variant": 2,
+    "prompt": "Fintech REST API handling both health-insurance claims (PHI-handling) and card payments (PCI), redundant across zones",
+    "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_kms_key",
+      "aws_cloudtrail",
+      "aws_guardduty_detector"
+    ]
+  },
+  {
+    "base_id": "fintech_hipaa_pci",
+    "mode": "multilingual",
     "variant": 0,
     "prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
     "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
@@ -3751,84 +2302,9 @@
   },
   {
     "base_id": "fintech_hipaa_pci",
-    "mode": "adversarial",
-    "variant": 1,
-    "prompt": "Fintech REST API handling both health-insurance claims (HIPAA) and card payments (PCI), highly available",
-    "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_kms_key",
-      "aws_cloudtrail",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "fintech_hipaa_pci",
-    "mode": "adversarial",
-    "variant": 2,
-    "prompt": "Fintech endpoint handling both health-insurance claims (PHI-handling) and card payments (PCI), redundant across zones",
-    "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_kms_key",
-      "aws_cloudtrail",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "fintech_hipaa_pci",
-    "mode": "adversarial",
-    "variant": 3,
-    "prompt": "Fintech service handling both health-insurance claims (regulated healthcare) and card payments (PCI), multi-AZ",
-    "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_kms_key",
-      "aws_cloudtrail",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "fintech_hipaa_pci",
-    "mode": "adversarial",
-    "variant": 4,
-    "prompt": "Fintech endpoint handling both health-insurance claims (PHI-handling) and card payments (PCI), redundant across zones",
-    "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_kms_key",
-      "aws_cloudtrail",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "fintech_hipaa_pci",
-    "mode": "multilingual",
-    "variant": 0,
-    "prompt": "Fintech API handling both health-insurance claims (PHI-handling) and card payments (PCI), multi-AZ",
-    "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_kms_key",
-      "aws_cloudtrail",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "fintech_hipaa_pci",
     "mode": "multilingual",
     "variant": 1,
-    "prompt": "Fintech endpoint handling both health-insurance claims (HIPAA) and card payments (PCI), redundant across zones",
+    "prompt": "Fintech API handling both health-insurance claims (PHI-handling) and card payments (PCI), redundant across zones",
     "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
     "expected_workload": "web_api",
     "expected_components": [
@@ -3843,96 +2319,6 @@
     "base_id": "fintech_hipaa_pci",
     "mode": "multilingual",
     "variant": 2,
-    "prompt": "Fintech API handling both health-insurance claims (PHI-handling) and card payments (PCI), multi-AZ",
-    "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_kms_key",
-      "aws_cloudtrail",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "fintech_hipaa_pci",
-    "mode": "multilingual",
-    "variant": 3,
-    "prompt": "Fintech service handling both health-insurance claims (regulated healthcare) and card payments (PCI), highly available",
-    "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_kms_key",
-      "aws_cloudtrail",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "fintech_hipaa_pci",
-    "mode": "multilingual",
-    "variant": 4,
-    "prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), redundant across zones",
-    "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_kms_key",
-      "aws_cloudtrail",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "fintech_hipaa_pci",
-    "mode": "noisy",
-    "variant": 0,
-    "prompt": "Fintech API handling both health-insurance claims (regulated healthcare) and card payments (PCI), redundant across zones",
-    "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_kms_key",
-      "aws_cloudtrail",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "fintech_hipaa_pci",
-    "mode": "noisy",
-    "variant": 1,
-    "prompt": "Fintech API handling both health-insurance claims (regulated healthcare) and card payments (PCI), multi-AZ",
-    "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_kms_key",
-      "aws_cloudtrail",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "fintech_hipaa_pci",
-    "mode": "noisy",
-    "variant": 2,
-    "prompt": "Fintech service handling both health-insurance claims (HIPAA) and card payments (PCI), highly available",
-    "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
-    "expected_workload": "web_api",
-    "expected_components": [
-      "aws_apigatewayv2_api",
-      "aws_lambda_function",
-      "aws_kms_key",
-      "aws_cloudtrail",
-      "aws_guardduty_detector"
-    ]
-  },
-  {
-    "base_id": "fintech_hipaa_pci",
-    "mode": "noisy",
-    "variant": 3,
     "prompt": "Fintech REST API handling both health-insurance claims (regulated healthcare) and card payments (PCI), multi-AZ",
     "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
     "expected_workload": "web_api",
@@ -3947,8 +2333,38 @@
   {
     "base_id": "fintech_hipaa_pci",
     "mode": "noisy",
-    "variant": 4,
-    "prompt": "Fintech API handling both health-insurance claims (PHI-handling) and card payments (PCI), redundant across zones",
+    "variant": 0,
+    "prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), redundant across zones",
+    "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_kms_key",
+      "aws_cloudtrail",
+      "aws_guardduty_detector"
+    ]
+  },
+  {
+    "base_id": "fintech_hipaa_pci",
+    "mode": "noisy",
+    "variant": 1,
+    "prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
+    "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
+    "expected_workload": "web_api",
+    "expected_components": [
+      "aws_apigatewayv2_api",
+      "aws_lambda_function",
+      "aws_kms_key",
+      "aws_cloudtrail",
+      "aws_guardduty_detector"
+    ]
+  },
+  {
+    "base_id": "fintech_hipaa_pci",
+    "mode": "noisy",
+    "variant": 2,
+    "prompt": "Fintech API handling both health-insurance claims (PHI-handling) and card payments (PCI), multi-AZ",
     "base_prompt": "Fintech API handling both health-insurance claims (HIPAA) and card payments (PCI), multi-AZ",
     "expected_workload": "web_api",
     "expected_components": [

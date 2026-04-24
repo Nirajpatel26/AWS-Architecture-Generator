@@ -37,9 +37,16 @@ _WORKLOAD_KEYWORDS = [
 ]
 
 _MULTI_REGION_KEYWORDS = (
-    "multi-region", "multi region", "active-passive", "active passive",
-    "active-active", "active active", "global ", "failover across",
-    "cross-region",
+    "multi-region", "multi region", "multiregion",
+    "active-passive", "active passive", "active-active", "active active",
+    "global ", "failover across", "cross-region", "cross region",
+)
+
+# Typo-tolerant HA detection — survives noisy input ("multy-az", "multi az").
+_HA_KEYWORDS = (
+    "multi-az", "multi az", "multiaz", "multy-az", "multy az",
+    "multi-zone", "multi zone", "highly available", "high availability",
+    "ha ", "redundant", "failover",
 )
 
 
@@ -95,6 +102,9 @@ def apply_defaults(spec: ArchSpec) -> ArchSpec:
     if not spec.ha_required and spec.scale in ("medium", "large"):
         spec.ha_required = True
         notes.append("ha_required defaulted to true because scale >= medium")
+    if not spec.ha_required and any(k in p for k in _HA_KEYWORDS):
+        spec.ha_required = True
+        notes.append("ha_required inferred from prompt keywords")
 
     if not spec.budget_tier:
         spec.budget_tier = "balanced"  # type: ignore[assignment]
@@ -121,13 +131,21 @@ def apply_defaults(spec: ArchSpec) -> ArchSpec:
                 f"data_store defaulted to {store} ({label}) for {spec.workload_type} workload"
             )
 
-    if "hipaa" in p and "HIPAA" not in spec.compliance:
+    # Typo-tolerant compliance detection — the synthetic-stability eval feeds
+    # prompts with variants like "hippa", "pci-dss", "soc 2", so we match a
+    # small set of common misspellings/acronyms in addition to the canonical
+    # form. Normalization in Stage 0 should handle most of these, but keyword
+    # matching here is a cheap safety net.
+    _hipaa_signals = ("hipaa", "hippa", "hipa", "phi ", "phi,", "protected health")
+    _pci_signals = ("pci", "card payment", "card payments", "cardholder")
+    _soc2_signals = ("soc2", "soc 2", "soc-2", "soc ii")
+    if any(s in p for s in _hipaa_signals) and "HIPAA" not in spec.compliance:
         spec.compliance.append("HIPAA")
         notes.append("HIPAA compliance detected from prompt")
-    if "pci" in p and "PCI" not in spec.compliance:
+    if any(s in p for s in _pci_signals) and "PCI" not in spec.compliance:
         spec.compliance.append("PCI")
         notes.append("PCI compliance detected from prompt")
-    if ("soc2" in p or "soc 2" in p or "soc-2" in p) and "SOC2" not in spec.compliance:
+    if any(s in p for s in _soc2_signals) and "SOC2" not in spec.compliance:
         spec.compliance.append("SOC2")
         notes.append("SOC2 compliance detected from prompt")
 

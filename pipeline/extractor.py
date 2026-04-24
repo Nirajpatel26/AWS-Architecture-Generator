@@ -19,6 +19,7 @@ import os
 from typing import List, Optional
 
 from . import cache as prompt_cache
+from . import normalizer
 from .llm import generate_json
 from .prompts import load, load_json
 from .prompts.allowlist import format_allowlist
@@ -110,32 +111,51 @@ def _build_prompt(raw_prompt: str, hits: List[dict]) -> tuple[str, str]:
 def extract(raw_prompt: str, retrieved: Optional[List[dict]] = None) -> ArchSpec:
     """Extract an ArchSpec from the prompt, voting over N samples.
 
+    The prompt is first normalized (Stage 0) into canonical English so that
+    paraphrases, translations, and noisy variants collapse to a stable form
+    before the LLM extraction stage. The normalized text is stored as
+    `spec.raw_prompt` so downstream keyword-based defaults operate on clean
+    input.
+
     Consults a SQLite prompt cache first — identical prompt + same prompt
     version + same model returns in ~ms. Disable with `CLOUDARCH_CACHE_DISABLED=1`.
     """
     model_name = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
-    cached = prompt_cache.get(raw_prompt, EXTRACTOR_PROMPT_VERSION, model_name)
+
+    try:
+        normalized = normalizer.normalize(raw_prompt) or raw_prompt
+    except Exception:
+        normalized = raw_prompt
+
+    # Cache keys off the normalized prompt so variants that canonicalize to
+    # the same text share a result.
+    cached = prompt_cache.get(normalized, EXTRACTOR_PROMPT_VERSION, model_name)
     if cached is not None:
         return cached
 
-    hits = retrieved if retrieved is not None else _retrieve_context(raw_prompt)
-    system, user = _build_prompt(raw_prompt, hits)
+    hits = retrieved if retrieved is not None else _retrieve_context(normalized)
+    system, user = _build_prompt(normalized, hits)
 
     n = max(1, VOTING_SAMPLES)
     samples: List[dict] = []
     for _ in range(n):
-        samples.append(
-            generate_json(user, schema=GEMINI_JSON_SCHEMA, system=system) or {}
-        )
+        try:
+            samples.append(
+                generate_json(user, schema=GEMINI_JSON_SCHEMA, system=system) or {}
+            )
+        except Exception:
+            samples.append({})
 
     data = vote_specs(samples)
-    data.setdefault("raw_prompt", raw_prompt)
+    # Downstream defaults.py keyword-matches on spec.raw_prompt — use the
+    # normalized text so compliance/workload hints survive through typos etc.
+    data["raw_prompt"] = normalized
     try:
         spec = ArchSpec(**{k: v for k, v in data.items() if v is not None})
     except Exception:
-        spec = ArchSpec(raw_prompt=raw_prompt)
+        spec = ArchSpec(raw_prompt=normalized)
 
     # Only cache meaningful extractions — skip empty/fallback specs.
     if any(samples):
-        prompt_cache.put(raw_prompt, EXTRACTOR_PROMPT_VERSION, model_name, spec)
+        prompt_cache.put(normalized, EXTRACTOR_PROMPT_VERSION, model_name, spec)
     return spec

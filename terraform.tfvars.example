@@ -1,0 +1,25 @@
+# Copy this file to terraform.tfvars and edit before running:
+#   cp terraform.tfvars.example terraform.tfvars
+#   terraform init
+#   terraform plan
+
+# ── AWS ──────────────────────────────────────────────────────────────────────
+aws_region = "us-east-1"   # e.g. us-west-2, eu-west-1, ap-southeast-1
+
+# ── Lambda ───────────────────────────────────────────────────────────────────
+lambda_runtime     = "python3.12"   # nodejs20.x | java21 | go1.x | python3.11
+lambda_memory_size = 512            # MB  — valid: 128 to 10240 (multiples of 64)
+lambda_timeout     = 10             # seconds — valid: 1 to 900
+lambda_handler     = "main.handler" # <module>.<function> inside your zip
+lambda_filename    = "handler.zip"  # relative path to your built deployment zip
+
+# ── Logging ──────────────────────────────────────────────────────────────────
+log_retention_days = 14   # days — AWS accepts: 1 3 5 7 14 30 60 90 120 150
+                           #        180 365 400 545 731 1096 1827 2192 2557
+                           #        2922 3288 3653  (0 = never expire)
+
+# ── RDS (only when data_store = sql) ─────────────────────────────────────────
+db_password = "change-me-please-8-chars-minimum"   # NEVER commit real secrets
+
+# ── Multi-region DR (only when multi_region toggle is on) ────────────────────
+dr_region = "us-west-2"   # secondary AWS region — S3 CRR + Route53 failover

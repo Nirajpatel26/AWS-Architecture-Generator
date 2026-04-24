@@ -1,0 +1,4 @@
+{fewshot}{context_block}User prompt:
+'''{raw_prompt}'''
+
+Return JSON only.

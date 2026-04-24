@@ -1,0 +1,8 @@
+{system}
+
+User caption (may be empty):
+"""
+{caption}
+"""
+
+Return JSON matching the schema. The image is attached.

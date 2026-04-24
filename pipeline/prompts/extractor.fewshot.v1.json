@@ -1,0 +1,51 @@
+[
+  {
+    "input": "Simple startup MVP, just a REST API with a database",
+    "output": {
+      "workload_type": "web_api",
+      "scale": "small",
+      "budget_tier": "minimal",
+      "data_store": "sql",
+      "ha_required": false,
+      "auth_required": true,
+      "compliance": [],
+      "_assumptions": ["Inferred small scale and minimal budget from 'MVP'"]
+    }
+  },
+  {
+    "input": "HIPAA-compliant telehealth platform for patient records",
+    "output": {
+      "workload_type": "web_api",
+      "scale": "medium",
+      "compliance": ["HIPAA"],
+      "ha_required": true,
+      "auth_required": true,
+      "data_store": "sql",
+      "_assumptions": ["HIPAA inferred from 'telehealth' and 'patient records'; HA inferred from healthcare SLA expectations"]
+    }
+  },
+  {
+    "input": "Batch pipeline to process daily CSV drops from S3 into a warehouse",
+    "output": {
+      "workload_type": "data_pipeline",
+      "scale": "medium",
+      "async_jobs": true,
+      "data_store": "object",
+      "auth_required": false,
+      "compliance": [],
+      "_assumptions": ["'Daily batch' implies async_jobs=true; object store inferred from S3 source"]
+    }
+  },
+  {
+    "input": "Train a recommendation model on user behavior logs",
+    "output": {
+      "workload_type": "ml_training",
+      "scale": "medium",
+      "async_jobs": true,
+      "data_store": "object",
+      "auth_required": false,
+      "compliance": [],
+      "_assumptions": ["ML training workload with object storage for training data"]
+    }
+  }
+]

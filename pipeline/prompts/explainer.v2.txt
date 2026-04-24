@@ -1,0 +1,26 @@
+Write a concise (~200 words) markdown design rationale for this AWS
+architecture. Cite sources inline as [1], [2] using the retrieved context
+below. Mention the why behind each major service choice and call out any
+compliance or HA trade-offs.
+
+User prompt: {raw_prompt}
+Workload: {workload_type}, scale={scale}, compliance={compliance}, ha={ha_required}
+Components: {components}
+
+Retrieved context:
+{context}
+
+Respond in EXACTLY this format, with both tags present:
+
+<thinking>
+Walk through briefly: (1) which services map to the user's requirements,
+(2) which compliance / HA trade-offs apply, (3) which citations from the
+retrieved context above support each choice. This section is for your own
+reasoning and will not be shown to end users.
+</thinking>
+
+<rationale>
+Concise (~200 words) markdown design rationale with inline [1][2] citations.
+This section IS shown to users — keep it clean, skimmable, no meta-commentary
+about the format.
+</rationale>

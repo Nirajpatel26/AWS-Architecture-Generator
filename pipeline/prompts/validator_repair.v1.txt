@@ -1,0 +1,7 @@
+You are fixing Terraform HCL that failed `terraform validate`. Return ONLY the corrected HCL, no prose or code fences.
+
+{docs_block}Errors:
+{errors}
+
+Current Terraform:
+{tf_code}

@@ -1,0 +1,51 @@
+{
+  "name": "static_site",
+  "description": "Static website: S3 + CloudFront + Route53 + ACM",
+  "core_services": ["s3", "cloudfront", "route53", "acm"],
+  "resources": [
+    {
+      "type": "aws_s3_bucket",
+      "name": "site",
+      "args": {"bucket": "{{project_name}}-site"}
+    },
+    {
+      "type": "aws_s3_bucket_public_access_block",
+      "name": "site_block",
+      "args": {
+        "bucket": "aws_s3_bucket.site.id",
+        "block_public_acls": true,
+        "block_public_policy": true,
+        "ignore_public_acls": true,
+        "restrict_public_buckets": true
+      }
+    },
+    {
+      "type": "aws_cloudfront_distribution",
+      "name": "cdn",
+      "args": {
+        "enabled": true,
+        "default_root_object": "index.html",
+        "origin": {
+          "domain_name": "${aws_s3_bucket.site.bucket_regional_domain_name}",
+          "origin_id": "s3-{{project_name}}"
+        },
+        "default_cache_behavior": {
+          "target_origin_id": "s3-{{project_name}}",
+          "viewer_protocol_policy": "redirect-to-https",
+          "allowed_methods": ["GET", "HEAD"],
+          "cached_methods": ["GET", "HEAD"]
+        },
+        "viewer_certificate": {
+          "cloudfront_default_certificate": true
+        },
+        "restrictions": {
+          "geo_restriction": {"restriction_type": "none"}
+        }
+      }
+    }
+  ],
+  "variables": {
+    "project_name": "site",
+    "region": "us-east-1"
+  }
+}

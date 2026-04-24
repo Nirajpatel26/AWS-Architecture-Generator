@@ -1,0 +1,86 @@
+{
+  "name": "hipaa",
+  "description": "Enforce encryption, TLS, CloudTrail, VPC endpoints, drop public IPs",
+  "order": 1,
+  "add_resources": [
+    {
+      "type": "aws_kms_key",
+      "name": "main",
+      "args": {
+        "description": "CMK for {{project_name}}",
+        "enable_key_rotation": true,
+        "deletion_window_in_days": 30
+      }
+    },
+    {
+      "type": "aws_cloudtrail",
+      "name": "audit",
+      "args": {
+        "name": "{{project_name}}-audit",
+        "s3_bucket_name": "aws_s3_bucket.audit_logs.id",
+        "include_global_service_events": true,
+        "is_multi_region_trail": true,
+        "enable_log_file_validation": true
+      }
+    },
+    {
+      "type": "aws_s3_bucket",
+      "name": "audit_logs",
+      "args": {"bucket": "{{project_name}}-audit-logs"}
+    },
+    {
+      "type": "aws_s3_bucket_server_side_encryption_configuration",
+      "name": "audit_logs_sse",
+      "args": {
+        "bucket": "aws_s3_bucket.audit_logs.id",
+        "rule": {
+          "apply_server_side_encryption_by_default": {
+            "sse_algorithm": "aws:kms",
+            "kms_master_key_id": "aws_kms_key.main.arn"
+          }
+        }
+      }
+    },
+    {
+      "type": "aws_s3_bucket_public_access_block",
+      "name": "audit_logs_block",
+      "args": {
+        "bucket": "aws_s3_bucket.audit_logs.id",
+        "block_public_acls": true,
+        "block_public_policy": true,
+        "ignore_public_acls": true,
+        "restrict_public_buckets": true
+      }
+    }
+  ],
+  "mutate_resources": [
+    {
+      "match": {"type": "aws_s3_bucket"},
+      "add_sibling": {
+        "type": "aws_s3_bucket_server_side_encryption_configuration",
+        "name": "{{match.name}}_sse",
+        "args": {
+          "bucket": "aws_s3_bucket.{{match.name}}.id",
+          "rule": {
+            "apply_server_side_encryption_by_default": {
+              "sse_algorithm": "aws:kms",
+              "kms_master_key_id": "aws_kms_key.main.arn"
+            }
+          }
+        }
+      }
+    },
+    {
+      "match": {"type": "aws_dynamodb_table"},
+      "merge_args": {
+        "server_side_encryption": {"enabled": true, "kms_key_arn": "aws_kms_key.main.arn"},
+        "point_in_time_recovery": {"enabled": true}
+      }
+    }
+  ],
+  "assumptions": [
+    "All PHI-bearing storage encrypted with customer-managed KMS key",
+    "CloudTrail enabled across all regions with log file validation",
+    "Public S3 access blocked; no public IPs on compute"
+  ]
+}

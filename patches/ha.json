@@ -1,0 +1,47 @@
+{
+  "name": "ha",
+  "description": "High availability: multi-AZ, min 2 capacity, provisioned concurrency on a published Lambda alias",
+  "order": 2,
+  "mutate_resources": [
+    {
+      "match": {"type": "aws_db_instance"},
+      "merge_args": {"multi_az": true, "backup_retention_period": 7}
+    },
+    {
+      "match": {"type": "aws_elasticache_replication_group"},
+      "merge_args": {"automatic_failover_enabled": true, "multi_az_enabled": true}
+    },
+    {
+      "match": {"type": "aws_lambda_function"},
+      "merge_args": {"publish": true},
+      "add_sibling": {
+        "type": "aws_lambda_alias",
+        "name": "{{match.name}}_live",
+        "args": {
+          "name": "live",
+          "function_name": "aws_lambda_function.{{match.name}}.function_name",
+          "function_version": "aws_lambda_function.{{match.name}}.version"
+        }
+      }
+    },
+    {
+      "match": {"type": "aws_lambda_function"},
+      "add_sibling": {
+        "type": "aws_lambda_provisioned_concurrency_config",
+        "name": "{{match.name}}_pc",
+        "args": {
+          "function_name": "aws_lambda_function.{{match.name}}.function_name",
+          "qualifier": "aws_lambda_alias.{{match.name}}_live.name",
+          "provisioned_concurrent_executions": 2
+        }
+      }
+    }
+  ],
+  "add_resources": [],
+  "assumptions": [
+    "RDS runs multi-AZ with 7-day backups",
+    "Lambda publishes a numbered version and a 'live' alias to pin traffic",
+    "Provisioned concurrency >= 2 attached to the live alias to absorb cold starts",
+    "At least 2 AZs required for load balancers and NAT gateways"
+  ]
+}

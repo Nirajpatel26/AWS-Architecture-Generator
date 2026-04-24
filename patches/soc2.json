@@ -1,0 +1,35 @@
+{
+  "name": "soc2",
+  "description": "SOC2: account-wide password policy, centralized CloudWatch audit log group",
+  "order": 5,
+  "add_resources": [
+    {
+      "type": "aws_iam_account_password_policy",
+      "name": "soc2_password",
+      "args": {
+        "minimum_password_length": 14,
+        "require_lowercase_characters": true,
+        "require_uppercase_characters": true,
+        "require_numbers": true,
+        "require_symbols": true,
+        "allow_users_to_change_password": true,
+        "max_password_age": 90,
+        "password_reuse_prevention": 10
+      }
+    },
+    {
+      "type": "aws_cloudwatch_log_group",
+      "name": "soc2_audit",
+      "args": {
+        "name": "/aws/{{project_name}}/soc2-audit",
+        "retention_in_days": 365
+      }
+    }
+  ],
+  "mutate_resources": [],
+  "assumptions": [
+    "Account-wide IAM password policy enforces 14+ chars, 90-day rotation, MFA recommended",
+    "Centralized CloudWatch log group retains audit events for 365 days",
+    "Pair with the HIPAA patch for KMS-backed encryption and CloudTrail"
+  ]
+}

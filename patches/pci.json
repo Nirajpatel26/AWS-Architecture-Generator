@@ -1,0 +1,49 @@
+{
+  "name": "pci",
+  "description": "PCI-DSS: GuardDuty threat detection, access logging, versioned S3 buckets, encrypted RDS with IAM auth",
+  "order": 4,
+  "add_resources": [
+    {
+      "type": "aws_guardduty_detector",
+      "name": "pci_gd",
+      "args": {
+        "enable": true
+      }
+    },
+    {
+      "type": "aws_cloudwatch_log_group",
+      "name": "pci_access",
+      "args": {
+        "name": "/aws/{{project_name}}/pci-access",
+        "retention_in_days": 365
+      }
+    }
+  ],
+  "mutate_resources": [
+    {
+      "match": {"type": "aws_s3_bucket"},
+      "add_sibling": {
+        "type": "aws_s3_bucket_versioning",
+        "name": "{{match.name}}_pci_versioning",
+        "args": {
+          "bucket": "aws_s3_bucket.{{match.name}}.id",
+          "versioning_configuration": {"status": "Enabled"}
+        }
+      }
+    },
+    {
+      "match": {"type": "aws_db_instance"},
+      "merge_args": {
+        "storage_encrypted": true,
+        "iam_database_authentication_enabled": true,
+        "deletion_protection": true
+      }
+    }
+  ],
+  "assumptions": [
+    "GuardDuty enabled for threat detection across the account",
+    "S3 buckets holding cardholder data are versioned (1-year+ retention)",
+    "RDS storage encrypted at rest; IAM database authentication required",
+    "Pair with the HIPAA patch if you also need KMS + CloudTrail audit"
+  ]
+}

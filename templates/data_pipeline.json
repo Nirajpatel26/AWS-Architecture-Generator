@@ -1,0 +1,79 @@
+{
+  "name": "data_pipeline",
+  "description": "Batch analytics pipeline: S3 + Glue + Athena + Step Functions",
+  "core_services": ["s3", "glue", "athena", "step_functions", "cloudwatch"],
+  "resources": [
+    {
+      "type": "aws_s3_bucket",
+      "name": "raw",
+      "args": {
+        "bucket": "{{project_name}}-raw"
+      }
+    },
+    {
+      "type": "aws_s3_bucket",
+      "name": "curated",
+      "args": {
+        "bucket": "{{project_name}}-curated"
+      }
+    },
+    {
+      "type": "aws_s3_bucket_versioning",
+      "name": "raw_versioning",
+      "args": {
+        "bucket": "aws_s3_bucket.raw.id",
+        "versioning_configuration": {"status": "Enabled"}
+      }
+    },
+    {
+      "type": "aws_glue_catalog_database",
+      "name": "catalog",
+      "args": {
+        "name": "{{project_name}}_catalog"
+      }
+    },
+    {
+      "type": "aws_glue_job",
+      "name": "etl",
+      "args": {
+        "name": "{{project_name}}-etl",
+        "role_arn": "aws_iam_role.glue.arn",
+        "command": {"name": "glueetl", "script_location": "s3://${aws_s3_bucket.raw.bucket}/scripts/etl.py"}
+      }
+    },
+    {
+      "type": "aws_iam_role",
+      "name": "glue",
+      "args": {
+        "name": "{{project_name}}-glue-role",
+        "assume_role_policy": "${jsonencode({Version = \"2012-10-17\", Statement = [{Effect = \"Allow\", Principal = {Service = \"glue.amazonaws.com\"}, Action = \"sts:AssumeRole\"}]})}"
+      }
+    },
+    {
+      "type": "aws_athena_workgroup",
+      "name": "analytics",
+      "args": {"name": "{{project_name}}-wg"}
+    },
+    {
+      "type": "aws_sfn_state_machine",
+      "name": "orchestrator",
+      "args": {
+        "name": "{{project_name}}-pipeline",
+        "role_arn": "aws_iam_role.sfn.arn",
+        "definition": "{}"
+      }
+    },
+    {
+      "type": "aws_iam_role",
+      "name": "sfn",
+      "args": {
+        "name": "{{project_name}}-sfn-role",
+        "assume_role_policy": "${jsonencode({Version = \"2012-10-17\", Statement = [{Effect = \"Allow\", Principal = {Service = \"states.amazonaws.com\"}, Action = \"sts:AssumeRole\"}]})}"
+      }
+    }
+  ],
+  "variables": {
+    "project_name": "pipeline",
+    "region": "us-east-1"
+  }
+}

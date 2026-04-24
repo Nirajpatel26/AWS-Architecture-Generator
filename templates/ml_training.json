@@ -1,0 +1,56 @@
+{
+  "name": "ml_training",
+  "description": "ML training workflow: S3 + SageMaker training + ECR",
+  "core_services": ["s3", "sagemaker", "ecr", "cloudwatch"],
+  "resources": [
+    {
+      "type": "aws_s3_bucket",
+      "name": "datasets",
+      "args": {"bucket": "{{project_name}}-datasets"}
+    },
+    {
+      "type": "aws_s3_bucket",
+      "name": "artifacts",
+      "args": {"bucket": "{{project_name}}-artifacts"}
+    },
+    {
+      "type": "aws_ecr_repository",
+      "name": "train_image",
+      "args": {
+        "name": "{{project_name}}-train",
+        "image_tag_mutability": "IMMUTABLE"
+      }
+    },
+    {
+      "type": "aws_iam_role",
+      "name": "sagemaker_exec",
+      "args": {
+        "name": "{{project_name}}-sm-exec",
+        "assume_role_policy": "${jsonencode({Version = \"2012-10-17\", Statement = [{Effect = \"Allow\", Principal = {Service = \"sagemaker.amazonaws.com\"}, Action = \"sts:AssumeRole\"}]})}"
+      }
+    },
+    {
+      "type": "aws_sagemaker_model",
+      "name": "model",
+      "args": {
+        "name": "{{project_name}}-model",
+        "execution_role_arn": "aws_iam_role.sagemaker_exec.arn",
+        "primary_container": {
+          "image": "${aws_ecr_repository.train_image.repository_url}:latest"
+        }
+      }
+    },
+    {
+      "type": "aws_cloudwatch_log_group",
+      "name": "training_logs",
+      "args": {
+        "name": "/aws/sagemaker/TrainingJobs",
+        "retention_in_days": "${var.log_retention_days}"
+      }
+    }
+  ],
+  "variables": {
+    "project_name": "mlproj",
+    "region": "us-east-1"
+  }
+}

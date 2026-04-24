@@ -1,0 +1,76 @@
+{
+  "name": "multi_region",
+  "description": "Cross-region replication: S3 CRR, RDS read replicas, Route53 failover",
+  "order": 3,
+  "mutate_resources": [
+    {
+      "match": {"type": "aws_db_instance"},
+      "add_sibling": {
+        "type": "aws_db_instance",
+        "name": "{{match.name}}_replica",
+        "args": {
+          "identifier": "{{project_name}}-db-replica",
+          "replicate_source_db": "aws_db_instance.{{match.name}}.arn",
+          "instance_class": "db.t3.micro",
+          "provider": "aws.dr",
+          "skip_final_snapshot": true
+        }
+      }
+    }
+  ],
+  "add_resources": [
+    {
+      "type": "aws_s3_bucket",
+      "name": "dr_replica",
+      "args": {
+        "bucket": "{{project_name}}-dr-replica",
+        "provider": "aws.dr"
+      }
+    },
+    {
+      "type": "aws_iam_role",
+      "name": "s3_replication",
+      "args": {
+        "name": "{{project_name}}-s3-replication",
+        "assume_role_policy": "${jsonencode({Version = \"2012-10-17\", Statement = [{Effect = \"Allow\", Principal = {Service = \"s3.amazonaws.com\"}, Action = \"sts:AssumeRole\"}]})}"
+      }
+    },
+    {
+      "type": "aws_s3_bucket_replication_configuration",
+      "name": "primary_to_dr",
+      "args": {
+        "role": "aws_iam_role.s3_replication.arn",
+        "bucket": "aws_s3_bucket.dr_replica.id",
+        "rule": {
+          "id": "replicate-all",
+          "status": "Enabled",
+          "destination": {
+            "bucket": "aws_s3_bucket.dr_replica.arn",
+            "storage_class": "STANDARD_IA"
+          }
+        }
+      }
+    },
+    {
+      "type": "aws_route53_health_check",
+      "name": "primary",
+      "args": {
+        "fqdn": "{{project_name}}.example.com",
+        "port": 443,
+        "type": "HTTPS",
+        "resource_path": "/health",
+        "failure_threshold": 3,
+        "request_interval": 30
+      }
+    }
+  ],
+  "providers": [
+    {"alias": "dr", "region_var": "dr_region"}
+  ],
+  "assumptions": [
+    "DR region is controlled by the dr_region Terraform variable (default us-west-2)",
+    "S3 cross-region replication configured from primary buckets to the DR bucket",
+    "RDS read replica created in DR region when a primary aws_db_instance exists",
+    "Route53 health checks drive active/passive failover routing"
+  ]
+}

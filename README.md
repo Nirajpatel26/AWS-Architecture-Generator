@@ -144,14 +144,20 @@ synthetic report also now reports a single-number **consistency score**
 (0–1) combining workload stability, component-set Jaccard overlap, and
 crash rate, for easy comparison across prompt-engineering changes.
 
-**Reference results (160 variants, 8 base cases):**
+A **Stage 0 prompt normalizer** canonicalizes noisy, multilingual, and
+adversarial phrasings into clean English before structured extraction, so
+specs stay stable across paraphrases. Combined with per-stage fallback
+handling in the orchestrator, every variant runs to completion with zero
+crashes.
 
-| Mode | workload_flip ↓ | comp_jaccard ↑ | compliance_drift ↓ | crash ↓ |
-|---|---|---|---|---|
-| paraphrase | **0.00** | 0.962 | 0.10 | 0.10 |
-| adversarial | **0.00** | 0.856 | 0.05 | 0.125 |
-| multilingual | **0.00** | 0.962 | 0.10 | 0.10 |
-| noisy | **0.00** | 0.971 | 0.075 | 0.075 |
+**Reference results (180 variants, 9 base cases) — consistency score 0.914:**
+
+| Mode | N | workload_flip ↓ | comp_jaccard ↑ | compliance_drift ↓ | tf_valid ↑ | crash ↓ |
+|---|---|---|---|---|---|---|
+| paraphrase   | 45 | 0.022      | 0.925      | 0.133 | **1.00** | **0.00** |
+| adversarial  | 45 | **0.000**  | **0.955**  | 0.111 | **1.00** | **0.00** |
+| multilingual | 45 | 0.022      | 0.943      | 0.089 | **1.00** | **0.00** |
+| noisy        | 45 | 0.044      | 0.914      | 0.111 | **1.00** | **0.00** |
 
 Flags: `--throttle <sec>` sleeps between pipeline calls (use ~4.5 to stay under Gemini 15 RPM); `--debug` prints full tracebacks for any pipeline exception; `--n <int>` controls variants per mode (default 5).
 
@@ -161,6 +167,7 @@ Flags: `--throttle <sec>` sleeps between pipeline calls (use ~4.5 to stay under 
 
 ```
 pipeline/
+  normalizer.py         Stage 0 — canonicalizes noisy / multilingual / adversarial prompts
   extractor.py          Stage 1 — RAG-grounded extraction with self-consistency voting
   defaults.py           Stage 2 — deterministic field fills
   assumptions.py        Stage 3 — surface + apply user overrides

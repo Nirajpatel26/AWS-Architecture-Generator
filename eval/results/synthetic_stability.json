@@ -1,0 +1,845 @@
+{
+  "llm_available": true,
+  "per_case": [
+    {
+      "base_id": "detailed_hipaa",
+      "base": {
+        "workload_type": "web_api",
+        "compliance": [
+          "HIPAA"
+        ],
+        "components": [
+          "aws_apigatewayv2_api",
+          "aws_cloudtrail",
+          "aws_cloudwatch_log_group",
+          "aws_cognito_user_pool",
+          "aws_dynamodb_table",
+          "aws_iam_role",
+          "aws_kms_key",
+          "aws_lambda_alias",
+          "aws_lambda_function",
+          "aws_lambda_provisioned_concurrency_config",
+          "aws_s3_bucket",
+          "aws_s3_bucket_public_access_block",
+          "aws_s3_bucket_server_side_encryption_configuration"
+        ],
+        "tf_valid": true,
+        "monthly_cost": 98.03
+      },
+      "modes": {
+        "paraphrase": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 0.744,
+          "compliance_drift_rate": 0.667,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "adversarial": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 0.744,
+          "compliance_drift_rate": 0.667,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "multilingual": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 0.872,
+          "compliance_drift_rate": 0.333,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "noisy": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 0.744,
+          "compliance_drift_rate": 0.667,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        }
+      }
+    },
+    {
+      "base_id": "moderate_ecom",
+      "base": {
+        "workload_type": "web_api",
+        "compliance": [],
+        "components": [
+          "aws_apigatewayv2_api",
+          "aws_cloudwatch_log_group",
+          "aws_cognito_user_pool",
+          "aws_dynamodb_table",
+          "aws_iam_role",
+          "aws_lambda_function"
+        ],
+        "tf_valid": true,
+        "monthly_cost": 5.7
+      },
+      "modes": {
+        "paraphrase": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "adversarial": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "multilingual": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "noisy": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        }
+      }
+    },
+    {
+      "base_id": "vague_api",
+      "base": {
+        "workload_type": "web_api",
+        "compliance": [],
+        "components": [
+          "aws_apigatewayv2_api",
+          "aws_cloudwatch_log_group",
+          "aws_cognito_user_pool",
+          "aws_dynamodb_table",
+          "aws_iam_role",
+          "aws_lambda_function"
+        ],
+        "tf_valid": true,
+        "monthly_cost": 5.7
+      },
+      "modes": {
+        "paraphrase": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "adversarial": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "multilingual": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "noisy": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        }
+      }
+    },
+    {
+      "base_id": "ambiguous_pipeline",
+      "base": {
+        "workload_type": "data_pipeline",
+        "compliance": [],
+        "components": [
+          "aws_athena_workgroup",
+          "aws_glue_catalog_database",
+          "aws_glue_job",
+          "aws_iam_role",
+          "aws_s3_bucket",
+          "aws_s3_bucket_versioning",
+          "aws_sfn_state_machine"
+        ],
+        "tf_valid": true,
+        "monthly_cost": 19.0
+      },
+      "modes": {
+        "paraphrase": {
+          "n": 3,
+          "workload_flip_rate": 0.333,
+          "component_jaccard_mean": 0.694,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "adversarial": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "multilingual": {
+          "n": 3,
+          "workload_flip_rate": 0.333,
+          "component_jaccard_mean": 0.694,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "noisy": {
+          "n": 3,
+          "workload_flip_rate": 0.667,
+          "component_jaccard_mean": 0.389,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        }
+      }
+    },
+    {
+      "base_id": "contradictory_webapp",
+      "base": {
+        "workload_type": "web_api",
+        "compliance": [],
+        "components": [
+          "aws_apigatewayv2_api",
+          "aws_cloudwatch_log_group",
+          "aws_cognito_user_pool",
+          "aws_dynamodb_table",
+          "aws_iam_role",
+          "aws_lambda_function"
+        ],
+        "tf_valid": true,
+        "monthly_cost": 5.7
+      },
+      "modes": {
+        "paraphrase": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "adversarial": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "multilingual": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "noisy": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        }
+      }
+    },
+    {
+      "base_id": "pci_payments",
+      "base": {
+        "workload_type": "web_api",
+        "compliance": [
+          "PCI"
+        ],
+        "components": [
+          "aws_apigatewayv2_api",
+          "aws_cloudwatch_log_group",
+          "aws_cognito_user_pool",
+          "aws_dynamodb_table",
+          "aws_guardduty_detector",
+          "aws_iam_role",
+          "aws_lambda_function"
+        ],
+        "tf_valid": true,
+        "monthly_cost": 11.2
+      },
+      "modes": {
+        "paraphrase": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "adversarial": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "multilingual": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "noisy": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        }
+      }
+    },
+    {
+      "base_id": "soc2_saas",
+      "base": {
+        "workload_type": "web_api",
+        "compliance": [
+          "SOC2"
+        ],
+        "components": [
+          "aws_apigatewayv2_api",
+          "aws_cloudwatch_log_group",
+          "aws_cognito_user_pool",
+          "aws_dynamodb_table",
+          "aws_iam_account_password_policy",
+          "aws_iam_role",
+          "aws_lambda_function"
+        ],
+        "tf_valid": true,
+        "monthly_cost": 6.2
+      },
+      "modes": {
+        "paraphrase": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "adversarial": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "multilingual": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "noisy": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        }
+      }
+    },
+    {
+      "base_id": "multi_region_saas",
+      "base": {
+        "workload_type": "web_api",
+        "compliance": [],
+        "components": [
+          "aws_apigatewayv2_api",
+          "aws_cloudwatch_log_group",
+          "aws_cognito_user_pool",
+          "aws_dynamodb_table",
+          "aws_iam_role",
+          "aws_lambda_alias",
+          "aws_lambda_function",
+          "aws_lambda_provisioned_concurrency_config",
+          "aws_route53_health_check",
+          "aws_s3_bucket",
+          "aws_s3_bucket_replication_configuration"
+        ],
+        "tf_valid": true,
+        "monthly_cost": 21.7
+      },
+      "modes": {
+        "paraphrase": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "adversarial": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "multilingual": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "noisy": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        }
+      }
+    },
+    {
+      "base_id": "ml_training_cv",
+      "base": {
+        "workload_type": "ml_training",
+        "compliance": [],
+        "components": [
+          "aws_cloudwatch_log_group",
+          "aws_ecr_repository",
+          "aws_iam_role",
+          "aws_s3_bucket",
+          "aws_sagemaker_model"
+        ],
+        "tf_valid": true,
+        "monthly_cost": 41.6
+      },
+      "modes": {
+        "paraphrase": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "adversarial": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "multilingual": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "noisy": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        }
+      }
+    },
+    {
+      "base_id": "static_marketing",
+      "base": {
+        "workload_type": "static_site",
+        "compliance": [],
+        "components": [
+          "aws_cloudfront_distribution",
+          "aws_iam_role",
+          "aws_route53_health_check",
+          "aws_s3_bucket",
+          "aws_s3_bucket_public_access_block",
+          "aws_s3_bucket_replication_configuration"
+        ],
+        "tf_valid": true,
+        "monthly_cost": 2.35
+      },
+      "modes": {
+        "paraphrase": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "adversarial": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "multilingual": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "noisy": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        }
+      }
+    },
+    {
+      "base_id": "iot_telemetry",
+      "base": {
+        "workload_type": "data_pipeline",
+        "compliance": [],
+        "components": [
+          "aws_athena_workgroup",
+          "aws_glue_catalog_database",
+          "aws_glue_job",
+          "aws_iam_role",
+          "aws_s3_bucket",
+          "aws_s3_bucket_versioning",
+          "aws_sfn_state_machine"
+        ],
+        "tf_valid": true,
+        "monthly_cost": 19.0
+      },
+      "modes": {
+        "paraphrase": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "adversarial": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "multilingual": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "noisy": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        }
+      }
+    },
+    {
+      "base_id": "healthcare_ml",
+      "base": {
+        "workload_type": "ml_training",
+        "compliance": [
+          "HIPAA"
+        ],
+        "components": [
+          "aws_cloudtrail",
+          "aws_cloudwatch_log_group",
+          "aws_ecr_repository",
+          "aws_iam_role",
+          "aws_kms_key",
+          "aws_s3_bucket",
+          "aws_s3_bucket_public_access_block",
+          "aws_s3_bucket_server_side_encryption_configuration",
+          "aws_sagemaker_model"
+        ],
+        "tf_valid": true,
+        "monthly_cost": 45.1
+      },
+      "modes": {
+        "paraphrase": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 0.704,
+          "compliance_drift_rate": 0.667,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "adversarial": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 0.852,
+          "compliance_drift_rate": 0.333,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "multilingual": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 0.852,
+          "compliance_drift_rate": 0.333,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "noisy": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 0.704,
+          "compliance_drift_rate": 0.667,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        }
+      }
+    },
+    {
+      "base_id": "internal_crud",
+      "base": {
+        "workload_type": "web_api",
+        "compliance": [],
+        "components": [
+          "aws_apigatewayv2_api",
+          "aws_cloudwatch_log_group",
+          "aws_cognito_user_pool",
+          "aws_dynamodb_table",
+          "aws_iam_role",
+          "aws_lambda_function"
+        ],
+        "tf_valid": true,
+        "monthly_cost": 5.7
+      },
+      "modes": {
+        "paraphrase": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "adversarial": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "multilingual": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "noisy": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        }
+      }
+    },
+    {
+      "base_id": "gaming_leaderboard",
+      "base": {
+        "workload_type": "web_api",
+        "compliance": [],
+        "components": [
+          "aws_apigatewayv2_api",
+          "aws_cloudwatch_log_group",
+          "aws_cognito_user_pool",
+          "aws_dynamodb_table",
+          "aws_iam_role",
+          "aws_lambda_alias",
+          "aws_lambda_function",
+          "aws_lambda_provisioned_concurrency_config"
+        ],
+        "tf_valid": true,
+        "monthly_cost": 1420.0
+      },
+      "modes": {
+        "paraphrase": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "adversarial": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "multilingual": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "noisy": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 1.0,
+          "compliance_drift_rate": 0.0,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        }
+      }
+    },
+    {
+      "base_id": "fintech_hipaa_pci",
+      "base": {
+        "workload_type": "web_api",
+        "compliance": [
+          "HIPAA",
+          "PCI"
+        ],
+        "components": [
+          "aws_apigatewayv2_api",
+          "aws_cloudtrail",
+          "aws_cloudwatch_log_group",
+          "aws_cognito_user_pool",
+          "aws_dynamodb_table",
+          "aws_guardduty_detector",
+          "aws_iam_role",
+          "aws_kms_key",
+          "aws_lambda_alias",
+          "aws_lambda_function",
+          "aws_lambda_provisioned_concurrency_config",
+          "aws_s3_bucket",
+          "aws_s3_bucket_public_access_block",
+          "aws_s3_bucket_server_side_encryption_configuration",
+          "aws_s3_bucket_versioning"
+        ],
+        "tf_valid": true,
+        "monthly_cost": 29.7
+      },
+      "modes": {
+        "paraphrase": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 0.733,
+          "compliance_drift_rate": 0.667,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "adversarial": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 0.733,
+          "compliance_drift_rate": 0.667,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "multilingual": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 0.733,
+          "compliance_drift_rate": 0.667,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        },
+        "noisy": {
+          "n": 3,
+          "workload_flip_rate": 0.0,
+          "component_jaccard_mean": 0.867,
+          "compliance_drift_rate": 0.333,
+          "tf_valid_rate": 1.0,
+          "crash_rate": 0.0
+        }
+      }
+    }
+  ],
+  "overall": {
+    "paraphrase": {
+      "n": 45,
+      "workload_flip_rate": 0.022,
+      "component_jaccard_mean": 0.925,
+      "compliance_drift_rate": 0.133,
+      "tf_valid_rate": 1.0,
+      "crash_rate": 0.0
+    },
+    "adversarial": {
+      "n": 45,
+      "workload_flip_rate": 0.0,
+      "component_jaccard_mean": 0.955,
+      "compliance_drift_rate": 0.111,
+      "tf_valid_rate": 1.0,
+      "crash_rate": 0.0
+    },
+    "multilingual": {
+      "n": 45,
+      "workload_flip_rate": 0.022,
+      "component_jaccard_mean": 0.943,
+      "compliance_drift_rate": 0.089,
+      "tf_valid_rate": 1.0,
+      "crash_rate": 0.0
+    },
+    "noisy": {
+      "n": 45,
+      "workload_flip_rate": 0.044,
+      "component_jaccard_mean": 0.914,
+      "compliance_drift_rate": 0.111,
+      "tf_valid_rate": 1.0,
+      "crash_rate": 0.0
+    }
+  },
+  "consistency_score": 0.914
+}
